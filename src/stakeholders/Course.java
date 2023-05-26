@@ -49,6 +49,10 @@ public class Course {
         this.listofStudents = listofStudents;
     }
 
+    public void setStudentAtIndex(Student student, int index){
+        listofStudents[index] = student;
+    }
+
     public String getCourseName() {
         return courseName;
     }
@@ -75,6 +79,14 @@ public class Course {
 
     public Student[] getListofStudents() {
         return listofStudents;
+    }
+
+    public Student getStudentIndex(int index){
+        return listofStudents[index];
+    }
+
+    public int getMAX_STUDENT() {
+        return MAX_STUDENT;
     }
 
 }

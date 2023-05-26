@@ -13,6 +13,9 @@ public class Lecturer extends Person {
         this.courses = courses;
     }
     
-    // create browse & choose subjects to teach
+    // Check Course Information
+    // Check Student Information
+    // Request Course Change
+    
 
 }

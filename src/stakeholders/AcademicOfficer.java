@@ -28,18 +28,14 @@ public class AcademicOfficer extends Person {
         }
     }
 
-    
     // show list of all course under academic officer
     public void listallCourses(){
         for(Course x: listofallCourses){
-            if(faculty.equals(x.getFaculty())){
-                System.out.println(
-                    "Course Name :" + x.getCourseName() + "\n" +
-                    "Course Code :" + x.getCourseCode() + "\n" +
-                    "Section :" + x.getSection() + "\n" +
-                    "Faculty :" + x.getFaculty() + "\n" 
-                );
-            }
+            System.out.println(
+                "Course Name :" + x.getCourseName() + "\n" +
+                "Course Code :" + x.getCourseCode() + "\n" +
+                "Section :" + x.getSection() + "\n" +
+                "Faculty :" + x.getFaculty() + "\n" );
         }
     }
     // browse and view student list & subject list
@@ -56,8 +52,16 @@ public class AcademicOfficer extends Person {
         course.setLecturer(lecturer);
         input.close();
     }
+
+    public void changeStudent(Student student,Course course){
+        for(int i = 0; i < course.getMAX_STUDENT(); i++){
+            if(student == course.getStudentIndex(i)){
+                course.setStudentAtIndex(student, i);
+            }
+        }
+    }
     // Manage student conflicts 
-    
+    // Manage lecturer conflicts
     
 
 }
