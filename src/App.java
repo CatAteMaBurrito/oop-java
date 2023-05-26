@@ -1,12 +1,8 @@
 import java.util.Scanner;
 
-import stakeholders.Lecturer;
-import stakeholders.Student;
-import stakeholders.AcademicOfficer;
-
-import Interfaces.AcademicOfficerIF;
-import Interfaces.StudentIF;
 import Interfaces.LecturerIF;
+import Interfaces.StudentIF;
+import stakeholders.AcademicOfficer;
 
 public class App {
     public static void main(String[] args) {
@@ -18,15 +14,15 @@ public class App {
         
         Scanner input = new Scanner(System.in);
         int userSelection = input.nextInt();
-        input.close();
+        
         
         System.out.print("\033[H\033[2J");   
         System.out.flush();
 
+        
         switch (userSelection) {
             case 1:
-                AcademicOfficerIF aosInterface = new AcademicOfficerIF();
-                aosInterface.start();
+                // officer menu
                 break;
             case 2:
                 LecturerIF lectInterface = new LecturerIF();
@@ -40,7 +36,6 @@ public class App {
             default:
                 System.out.println("enter a valid choice");
         }
-
-
+        input.close();
     }
 }

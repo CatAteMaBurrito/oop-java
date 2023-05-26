@@ -5,15 +5,15 @@ public class Person {
     protected String ID;
     protected String nationality;
     protected boolean gender; // True: Male, False: Female
-    
-    public Person(String name, int yob, String iD, String nationality, boolean gender) {
+    protected String faculty;
+    public Person(String name, int yob, String iD, String nationality, boolean gender, String faculty) {
         this.name = name;
         this.yob = yob;
         ID = iD;
         this.nationality = nationality;
         this.gender = gender;
+        this.faculty = faculty;
     }
-
     public String getName() {
         return name;
     }
@@ -29,6 +29,10 @@ public class Person {
     public boolean isGender() {
         return gender;
     }
+    public String getFaculty() {
+        return faculty;
+    }
 
 
+    
 }
