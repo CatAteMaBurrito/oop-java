@@ -13,6 +13,11 @@ public class AcademicOfficer extends Person {
         this.email = email;
     }
 
+    // Add new student to listofstudents
+    public void addNewStudent(Student student){
+        listofallStudents.add(student);
+    }
+
     // create a new course
     public Course createNewCourse(String courseName, String courseCode, int section, String faculty, int creditHours){
         Course newcourse = new Course(courseName, courseCode, section, faculty, creditHours);
@@ -60,7 +65,18 @@ public class AcademicOfficer extends Person {
             }
         }
     }
+    // get and set Email
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     // Manage student conflicts 
+
     // Manage lecturer conflicts
     
 

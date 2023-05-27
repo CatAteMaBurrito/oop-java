@@ -29,10 +29,32 @@ public class Person {
     public boolean isGender() {
         return gender;
     }
+    public String getGender(){
+        if(gender == true){
+            return "Male";
+        }else{
+            return "Female";
+        }
+    }
     public String getFaculty() {
         return faculty;
     }
-
-
-    
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setYob(int yob) {
+        this.yob = yob;
+    }
+    public void setID(String iD) {
+        ID = iD;
+    }
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+    public void setGender(boolean gender) {
+        this.gender = gender;
+    }
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
 }

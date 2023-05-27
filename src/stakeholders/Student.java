@@ -30,7 +30,8 @@ public class Student extends Person {
         return gpa;
     }
     
-    // fill-in profile/info
+    // fill-in / edit profile/info
+    // This function is fullfilled by Person
     // browse and register subjects    
-
+    
 }
