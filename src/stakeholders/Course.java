@@ -13,12 +13,35 @@ public class Course {
     private Lecturer lecturer;
     private Student[] listofStudents = new Student[MAX_STUDENT];
 
+    public Course(){
+        this.courseName = null;
+        this.courseCode = null;
+        this.section = 0;
+        this.faculty = null;
+        this.creditHours = 0;
+    }
+
     public Course(String courseName, String courseCode, int section, String faculty, int creditHours) {
+        // if credit hour is less than fucking 0 , set it to 1
+        // if credit hour is more than fucking 8 , set it to 8
+        // section can be a positive integer no greater than 100
+        // ur moms gay
         this.courseName = courseName;
         this.courseCode = courseCode;
-        this.section = section;
+        if(section > 100){
+            this.section = 100;
+        }else{
+            this.section = section;
+        }
         this.faculty = faculty;
-        this.creditHours = creditHours;
+        if(creditHours < 0){
+            this.creditHours = 1;
+        }else if(creditHours > 8){
+            this.creditHours = 8;
+        }else{
+            this.creditHours = creditHours;
+        }
+        
     }
 
     public void setCourseName(String courseName) {

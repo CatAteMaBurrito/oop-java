@@ -21,6 +21,7 @@ public class AcademicOfficer extends Person {
     // create a new course
     public Course createNewCourse(String courseName, String courseCode, int section, String faculty, int creditHours){
         Course newcourse = new Course(courseName, courseCode, section, faculty, creditHours);
+        listofallCourses.add(newcourse);
         return newcourse;
     }
     // Browser List of all students 
@@ -35,13 +36,18 @@ public class AcademicOfficer extends Person {
 
     // show list of all course under academic officer
     public void listallCourses(){
-        for(Course x: listofallCourses){
-            System.out.println(
-                "Course Name :" + x.getCourseName() + "\n" +
-                "Course Code :" + x.getCourseCode() + "\n" +
-                "Section :" + x.getSection() + "\n" +
-                "Faculty :" + x.getFaculty() + "\n" );
+        if(listofallCourses.size() == 0){
+            System.out.println("No courses exist !!!");
+        }else{
+            for(Course x: listofallCourses){
+                System.out.println(
+                    "Course Name :" + x.getCourseName() + "\n" +
+                    "Course Code :" + x.getCourseCode() + "\n" +
+                    "Section :" + x.getSection() + "\n" +
+                    "Faculty :" + x.getFaculty() + "\n" );
+            }
         }
+        
     }
     // browse and view student list & subject list
     // edit existing course
