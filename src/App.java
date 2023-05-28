@@ -89,9 +89,9 @@ public class App {
     public static void StudentIF(Student stud){
         Scanner input = new Scanner(System.in);
         boolean exit = false;
+        System.out.print("\033[H\033[2J");   
+        System.out.flush();
         do {
-            System.out.print("\033[H\033[2J");   
-            System.out.flush();
             System.out.println("----------------");
             System.out.println("Student");
             System.out.println("----------------");
@@ -107,36 +107,57 @@ public class App {
             int key = input.nextInt();
             input.nextLine();
 
-          
 
             switch (key) {
                 case 1:
                     System.out.println("VIEW PERSONAL INFO");
+                    System.out.println("----------------");
+                    System.out.println("Student Name: "+stud.getName());
+                    System.out.println("Student year of birth: "+stud.getYob());
+                    System.out.println("Student ID: "+stud.getID());
+                    System.out.println("Student Nationality: "+stud.getNationality());
+                    System.out.println("Student Gender: "+stud.getGender());
+                    System.out.println("Student Faculty: "+stud.getFaculty());
+                    System.out.println("Student Total credit hours: " + stud.getTotalcredithours() );
+                    System.out.println("Student CGPA: " + stud.getCgpa() );
+                    System.out.println("Student Matric Number: " + stud.getMatricNum());
                     
-                    int pause1 = input.nextInt();
+                    System.out.println("----------------");
+                    System.out.println("press [0] to go back");
+                    key = input.nextInt();
                     break;
 
                 case 2:
                     System.out.println("EDIT DESCRIPTION");
-                    int pause2 = input.nextInt();
+                    System.out.println("----------------");
 
+                    System.out.println("Current Description: " + stud.getDescription());
+                    System.out.println("Enter new Description: ");
+                    String newDescription = input.nextLine();
+                    stud.setDescription(newDescription);
+                    System.out.println(" ");
+                    System.out.println("New Description: " + stud.getDescription());
+
+                    System.out.println("----------------");
+                    System.out.println("press [0] to go back");
+                    key = input.nextInt();
                     break;
 
                 case 3:
                     System.out.println("REGISTER COURSE");
-                    int pause3 = input.nextInt();
+                    key = input.nextInt();
 
                     break;
 
                 case 4:
                     System.out.println("VIEW REGISTERED COURSES");
-                    int pause4 = input.nextInt();
+                    key = input.nextInt();
 
                     break;
                 
                 case 5:
                     System.out.println("COURSE AMENDMENT");
-                    int pause5 = input.nextInt();
+                    key = input.nextInt();
 
                     break;
                 default:

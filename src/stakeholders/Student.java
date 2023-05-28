@@ -10,8 +10,19 @@ public class Student extends Person {
     private int totalcredithours;
 
     private double cgpa;
+    public double getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(double gpa) {
+        this.gpa = gpa;
+    }
+
+    private double gpa;
+
 
     private String description = "Undergraduate Student";
+    
 
     public Student(String name, int yob, String ID, String nationality, boolean gender, String faculty,
             String matricNum, int totalcredithours, double cgpa) {
@@ -46,10 +57,20 @@ public class Student extends Person {
         this.cgpa = cgpa;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     // fill-in / edit profile/info
         // 1. can mondify the description
         // 2. can view the description
         // 3. can view the profile info
+
+    
 
     // browse and register courses
         // 1. register courses - listofcourses from AcademicOfficer
