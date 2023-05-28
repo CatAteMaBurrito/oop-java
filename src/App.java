@@ -84,7 +84,23 @@ public class App {
     }
 
     public void StudentIF(){
+        Scanner input = new Scanner(System.in);
+        boolean exit = false;
+        do{
+            System.out.print("\033[H\033[2J");   
+            System.out.flush();
+            System.out.println("----------------");
+            System.out.println("Student");
+            System.out.println("----------------");
+            System.out.println("[1] Edit Profile");
+            System.out.println("[2] Browse Courses");
+            System.out.println("[3] Edit Course");
+            System.out.println("[0] Exit  ");
+            System.out.println("----------------");
+            int key = input.nextInt();
+            input.nextLine();
 
+        }
     }
 
 

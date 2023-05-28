@@ -7,7 +7,6 @@ public class AcademicOfficer extends Person {
     private Vector<Course> listofallCourses = new Vector<Course>(4);
     private Vector<Student> listofallStudents = new Vector<Student>(30);
     
-
     public AcademicOfficer(String name, int yob, String iD, String nationality, boolean gender, String faculty,String email) {
         super(name, yob, iD, nationality, gender, faculty);
         this.email = email;
