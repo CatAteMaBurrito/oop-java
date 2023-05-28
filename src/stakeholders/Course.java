@@ -95,6 +95,11 @@ public class Course {
             }
         }
     }
+    public void printAllStudents(){
+        for(Student x:listofStudents){
+            System.out.println(x.getName());
+        }
+    }
 
     public int getSizeOfStudentList(){
         return listofStudents.size();

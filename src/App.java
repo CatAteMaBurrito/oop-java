@@ -7,9 +7,27 @@ import stakeholders.Student;
 public class App {
 
     public static AcademicOfficer officer1 = new AcademicOfficer("Officer1", 1984, "200111023", "Malaysian", true, "Faculty of Computer Science", "Officer1@utm.my");
-    public static Course course1 = new Course();
-    public static Student stu1 = new Student("Marz", 1992, "2021", "Kazakistani", true, "Computer Science", "A34EC0001", 0, 0, 2.5, 0);
+    public static Course course1 = new Course("Java Programming", "SECJ2033", 1, "Computer", 1);
+    public static Course course2 = new Course("Data Structures", "SECD3044", 2, "Computer", 2);
+    public static Course course3 = new Course("Database Management", "SECC4055", 3, "Computer", 3);
+    public static Course course4 = new Course("Software Engineering", "SECE5066", 4, "Computer", 4);
+    public static Course course5 = new Course("Artificial Intelligence", "SECA6077", 5, "Computer", 5);
+    public static Student stu6 = new Student("Badshah", 1992, "2021", "Kazakistani", true, "Computer", "A34EC0001", 0, 0, 2.5, 0);
+    public static Student stu1 = new Student("Rahul", 1992, "2021", "Indian", true, "Computer Science", "A34EC0001", 0, 0, 2.5, 0);
+    public static Student stu2 = new Student("Ayesha", 1995, "2022", "Pakistani", true, "Engineering", "A34EC0002", 0, 0, 3.2, 0);
+    public static Student stu3 = new Student("Fatima", 1998, "2023", "Bangladeshi", false, "Psychology", "A34EC0003", 0, 0, 3.8, 0);
+    public static Student stu4 = new Student("Mohan", 1994, "2020", "Sri Lankan", true, "Mathematics", "A34EC0004", 0, 0, 3.1, 0);
+    public static Student stu5 = new Student("Anushka", 1997, "2021", "Nepalese", false, "Art History", "A34EC0005", 0, 0, 3.6, 0);
+    
     public static void main(String[] args) {
+        // this is fucking painful
+        officer1.addCourse(course1);
+        officer1.addCourse(course2);
+        officer1.addCourse(course3);
+        officer1.addCourse(course4);
+        officer1.addCourse(course5);
+        course2.addNewStudent(stu1);
+        
         System.out.println("Log In as:");
         System.out.println("1. Academic Officer");
         System.out.println("2. Lecturer");
@@ -38,6 +56,7 @@ public class App {
 
     public static void AcademicOfficerIF(AcademicOfficer officer){
         Scanner input = new Scanner(System.in);
+        String pause;
         boolean exit = false;
         do{
             System.out.print("\033[H\033[2J");   
@@ -47,7 +66,7 @@ public class App {
             System.out.println("----------------");
             System.out.println("[1] New Course");
             System.out.println("[2] Browse Courses");
-            System.out.println("[3] Edit Course");
+            System.out.println("[3] Delete Student");
             System.out.println("[0] Exit  ");
             System.out.println("----------------");
             int key = input.nextInt();
@@ -66,12 +85,19 @@ public class App {
                     System.out.print("Credit Hours :");
                     int creditHours = input.nextInt();
                     input.nextLine();
-                    course1 = officer.createNewCourse(name,code,section,faculty,creditHours);
+                    officer.createNewCourse(name,code,section,faculty,creditHours);
                     break;
                 case 2:
                     officer.listallCourses();
                     System.out.println("Press any key to continue");
-                    String pause = input.nextLine();
+                    input.nextLine();
+                    break;
+                case 3:
+                    course1.printAllStudents();
+                    officer.changeStudentSection(course1,course2, stu1);
+                    course2.printAllStudents();
+                    System.out.println("Press any key to continue");
+                    input.nextLine();
                     break;
                 default:
                     exit = true;

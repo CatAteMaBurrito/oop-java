@@ -27,6 +27,10 @@ public class AcademicOfficer extends Person {
         this.listofallCourses = listofallCourses;
     }
 
+    public void addCourse(Course course){
+        listofallCourses.add(course);
+    }
+
     public void setListofallStudents(Vector<Student> listofallStudents) {
         this.listofallStudents = listofallStudents;
     }
@@ -108,6 +112,8 @@ public class AcademicOfficer extends Person {
     public void changeStudentSection(Course course1,Course course2,Student student){
         if(course2.addNewStudent(student)){
             course1.delteStudent(student);
+        }else{
+            System.out.println("Get permission from dean ");
         }
     }
     // Manage lecturer conflicts
