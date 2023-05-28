@@ -21,7 +21,7 @@ public class AcademicOfficer extends Person {
     // create a new course
     public Course createNewCourse(String courseName, String courseCode, int section, String faculty, int creditHours){
         Course newcourse = new Course(courseName, courseCode, section, faculty, creditHours);
-        listofallCourses.add(newcourse);
+        this.listofallCourses.add(newcourse);
         return newcourse;
     }
     // Browser List of all students 

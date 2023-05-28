@@ -3,6 +3,7 @@ public class Lecturer extends Person {
     private String staffNumber;
     private String Deparment;
     private String Faculty;
+    // Course limit 
     private Course[] courses = new Course[2];
     public Lecturer(String name, int yob, String iD, String nationality, boolean gender, String faculty,
             String staffNumber, String deparment, String faculty2, Course[] courses) {
