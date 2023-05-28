@@ -11,17 +11,14 @@ public class Student extends Person {
 
     private double cgpa;
 
-    private double gpa;
-
     private String description = "Undergraduate Student";
 
-    public Student(String name, int yob, String iD, String nationality, boolean gender, String faculty,
-            String matricNum, int totalcredithours, double cgpa, double gpa) {
-        super(name, yob, iD, nationality, gender, faculty);
+    public Student(String name, int yob, String ID, String nationality, boolean gender, String faculty,
+            String matricNum, int totalcredithours, double cgpa) {
+        super(name, yob, ID, nationality, gender, faculty);
         this.matricNum = matricNum;
         this.totalcredithours = totalcredithours;
         this.cgpa = cgpa;
-        this.gpa = gpa;
     }
 
     public String getMatricNum() {
@@ -36,9 +33,6 @@ public class Student extends Person {
     public double getCgpa() {
         return this.cgpa;
     }
-    public double getGpa() {
-        return this.gpa;
-    }
 
     public void setMatricNum(String matricNum) {
         this.matricNum = matricNum;
@@ -52,23 +46,17 @@ public class Student extends Person {
         this.cgpa = cgpa;
     }
 
-    public void setGpa(double gpa) {
-        this.gpa = gpa;
-    }
-
     // fill-in / edit profile/info
         // 1. can mondify the description
-        // 2. 
+        // 2. can view the description
+        // 3. can view the profile info
 
-    // browse and register subjects
-        // 1. modify the 
+    // browse and register courses
+        // 1. register courses - listofcourses from AcademicOfficer
+        // 2. view registered course 
 
-    // check registered subjects
     // course section amendment
+        // 1. change section - change course?
     
-
-
-    // This function is fullfilled by Person
-    // browse and register subjects    
     
 }
