@@ -6,11 +6,29 @@ public class AcademicOfficer extends Person {
     private String email; // Unique Identifier 
     private Vector<Course> listofallCourses = new Vector<Course>(4);
     private Vector<Student> listofallStudents = new Vector<Student>(30);
-    
+
 
     public AcademicOfficer(String name, int yob, String iD, String nationality, boolean gender, String faculty,String email) {
         super(name, yob, iD, nationality, gender, faculty);
         this.email = email;
+    }
+
+    public Vector<Course> getListofallCourses() {
+        return listofallCourses;
+    }
+
+    public Vector<Student> getListofallStudents() {
+        return listofallStudents;
+    }
+
+    
+
+    public void setListofallCourses(Vector<Course> listofallCourses) {
+        this.listofallCourses = listofallCourses;
+    }
+
+    public void setListofallStudents(Vector<Student> listofallStudents) {
+        this.listofallStudents = listofallStudents;
     }
 
     // Add new student to listofstudents
@@ -65,11 +83,16 @@ public class AcademicOfficer extends Person {
     }
 
     public void changeStudent(Student student,Course course){
-        for(int i = 0; i < course.getMAX_STUDENT(); i++){
-            if(student == course.getStudentIndex(i)){
-                course.setStudentAtIndex(student, i);
+        if(course.getSizeOfStudentList() == course.getMAX_STUDENT()){
+            System.out.println("Section Full");
+        }else{
+            for(int i = 0; i < course.getMAX_STUDENT(); i++){
+                if(student == course.getStudentIndex(i)){
+                    course.setStudentAtIndex(student, i);
+                }
             }
         }
+
     }
     // get and set Email
 
@@ -81,8 +104,12 @@ public class AcademicOfficer extends Person {
         this.email = email;
     }
     
-    // Manage student conflicts 
-
+    // Manage student admentment
+    public void changeStudentSection(Course course1,Course course2,Student student){
+        if(course2.addNewStudent(student)){
+            course1.delteStudent(student);
+        }
+    }
     // Manage lecturer conflicts
     
 

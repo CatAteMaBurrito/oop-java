@@ -31,9 +31,9 @@ public class Student extends Person {
     public double getGpa() {
         return gpa;
     }
-    
     // fill-in / edit profile/info
     // This function is fullfilled by Person
     // browse and register subjects    
+
     
 }

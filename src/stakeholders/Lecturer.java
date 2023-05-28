@@ -2,18 +2,15 @@ package stakeholders;
 public class Lecturer extends Person {
     private String staffNumber;
     private String Deparment;
-    private String Faculty;
     // Course limit 
     private Course[] courses = new Course[2];
+
     public Lecturer(String name, int yob, String iD, String nationality, boolean gender, String faculty,
-            String staffNumber, String deparment, String faculty2, Course[] courses) {
+            String staffNumber, String deparment) {
         super(name, yob, iD, nationality, gender, faculty);
         this.staffNumber = staffNumber;
         Deparment = deparment;
-        Faculty = faculty2;
-        this.courses = courses;
     }
-    
     // Check Course Information
     public void checkCourseInfo(int index){
         System.out.println(
@@ -41,31 +38,24 @@ public class Lecturer extends Person {
     public void setStaffNumber(String staffNumber) {
         this.staffNumber = staffNumber;
     }
-
     public void setDeparment(String deparment) {
         Deparment = deparment;
     }
-
     public void setFaculty(String faculty) {
         Faculty = faculty;
     }
-
     public void setCourses(Course[] courses) {
         this.courses = courses;
     }
-
     public String getStaffNumber() {
         return staffNumber;
     }
-
     public String getDeparment() {
         return Deparment;
     }
-
     public String getFaculty() {
         return Faculty;
     }
-
     public Course[] getCourses() {
         return courses;
     }

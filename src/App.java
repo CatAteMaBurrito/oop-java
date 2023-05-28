@@ -2,11 +2,13 @@ import java.util.Scanner;
 
 import stakeholders.AcademicOfficer;
 import stakeholders.Course;
+import stakeholders.Student;
 
 public class App {
 
     public static AcademicOfficer officer1 = new AcademicOfficer("Officer1", 1984, "200111023", "Malaysian", true, "Faculty of Computer Science", "Officer1@utm.my");
     public static Course course1 = new Course();
+    public static Student stu1 = new Student("Marz", 1992, "2021", "Kazakistani", true, "Computer Science", "A34EC0001", 0, 0, 2.5, 0);
     public static void main(String[] args) {
         System.out.println("Log In as:");
         System.out.println("1. Academic Officer");
