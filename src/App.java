@@ -7,6 +7,7 @@ import stakeholders.Student;
 public class App {
 
     public static AcademicOfficer officer1 = new AcademicOfficer("Officer1", 1984, "200111023", "Malaysian", true, "Faculty of Computer Science", "Officer1@utm.my");
+
     public static Course course1 = new Course("Java Programming", "SECJ2033", 1, "Computer", 1);
     public static Course course2 = new Course("Data Structures", "SECD3044", 2, "Computer", 2);
     public static Course course3 = new Course("Database Management", "SECC4055", 3, "Computer", 3);
@@ -19,6 +20,9 @@ public class App {
     public static Student stu4 = new Student("Mohan", 1994, "2020", "Sri Lankan", true, "Mathematics", "A34EC0004", 0, 0, 3.1, 0);
     public static Student stu5 = new Student("Anushka", 1997, "2021", "Nepalese", false, "Art History", "A34EC0005", 0, 0, 3.6, 0);
     
+    public static Student student1 = new Student("Markooz", 2000, "INDIA_69420", "India", true, "Computing", "A21EC1234", 69, 3.2);
+    public static Course course1 = new Course();
+
     public static void main(String[] args) {
         // this is fucking painful
         officer1.addCourse(course1);
@@ -45,7 +49,7 @@ public class App {
 
                 break;
             case 3:
-
+                StudentIF(student1);
                 break;
 
             default:
@@ -111,8 +115,88 @@ public class App {
 
     }
 
-    public void StudentIF(){
 
+    public static void StudentIF(Student stud){
+        Scanner input = new Scanner(System.in);
+        boolean exit = false;
+        System.out.print("\033[H\033[2J");   
+        System.out.flush();
+        do {
+            System.out.println("----------------");
+            System.out.println("Student");
+            System.out.println("----------------");
+            System.out.println("[1] View Personal Info");
+            System.out.println("[2] Edit Description");
+            System.out.println("[3] register course");
+            System.out.println("[4] View registered courses");
+            System.out.println("[5] Course Amendment");
+            System.out.println("[0] Exit");
+
+
+            System.out.println("----------------");
+            int key = input.nextInt();
+            input.nextLine();
+
+
+            switch (key) {
+                case 1:
+                    System.out.println("VIEW PERSONAL INFO");
+                    System.out.println("----------------");
+                    System.out.println("Student Name: "+stud.getName());
+                    System.out.println("Student year of birth: "+stud.getYob());
+                    System.out.println("Student ID: "+stud.getID());
+                    System.out.println("Student Nationality: "+stud.getNationality());
+                    System.out.println("Student Gender: "+stud.getGender());
+                    System.out.println("Student Faculty: "+stud.getFaculty());
+                    System.out.println("Student Total credit hours: " + stud.getTotalcredithours() );
+                    System.out.println("Student CGPA: " + stud.getCgpa() );
+                    System.out.println("Student Matric Number: " + stud.getMatricNum());
+                    
+                    System.out.println("----------------");
+                    System.out.println("press [0] to go back");
+                    key = input.nextInt();
+                    break;
+
+                case 2:
+                    System.out.println("EDIT DESCRIPTION");
+                    System.out.println("----------------");
+
+                    System.out.println("Current Description: " + stud.getDescription());
+                    System.out.println("Enter new Description: ");
+                    String newDescription = input.nextLine();
+                    stud.setDescription(newDescription);
+                    System.out.println(" ");
+                    System.out.println("New Description: " + stud.getDescription());
+
+                    System.out.println("----------------");
+                    System.out.println("press [0] to go back");
+                    key = input.nextInt();
+                    break;
+
+                case 3:
+                    System.out.println("REGISTER COURSE");
+                    key = input.nextInt();
+
+                    break;
+
+                case 4:
+                    System.out.println("VIEW REGISTERED COURSES");
+                    key = input.nextInt();
+
+                    break;
+                
+                case 5:
+                    System.out.println("COURSE AMENDMENT");
+                    key = input.nextInt();
+
+                    break;
+                default:
+                    exit = true;
+                    break;
+            }
+           
+        } while(exit == false);
+        input.close();
     }
 
 
