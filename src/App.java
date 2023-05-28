@@ -5,20 +5,17 @@ import stakeholders.Course;
 
 public class App {
 
-    
     public static AcademicOfficer officer1 = new AcademicOfficer("Officer1", 1984, "200111023", "Malaysian", true, "Faculty of Computer Science", "Officer1@utm.my");
     public static Course course1 = new Course();
     public static void main(String[] args) {
         System.out.println("Log In as:");
         System.out.println("1. Academic Officer");
         System.out.println("2. Lecturer");
-        System.out.println("3. Student");        
+        System.out.println("3. Student");  
         Scanner input = new Scanner(System.in);
         int userSelection = input.nextInt();
         System.out.print("\033[H\033[2J");   
         System.out.flush();
-
-        
         switch (userSelection) {
             case 1:
                 // officer menu
@@ -35,9 +32,6 @@ public class App {
                 System.out.println("enter a valid choice");
         }
         input.close();
-    }
-    public void userSelection(){
-        
     }
 
     public static void AcademicOfficerIF(AcademicOfficer officer){
@@ -73,9 +67,9 @@ public class App {
                     course1 = officer.createNewCourse(name,code,section,faculty,creditHours);
                     break;
                 case 2:
-                    System.out.print("\033[H\033[2J");   
-                    System.out.flush();
                     officer.listallCourses();
+                    System.out.println("Press any key to continue");
+                    String pause = input.nextLine();
                     break;
                 default:
                     exit = true;

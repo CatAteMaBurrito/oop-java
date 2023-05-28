@@ -72,6 +72,7 @@ public class Course {
         this.listofStudents = listofStudents;
     }
 
+    // set specific student information
     public void setStudentAtIndex(Student student, int index){
         listofStudents[index] = student;
     }
@@ -104,6 +105,7 @@ public class Course {
         return listofStudents;
     }
 
+    // Get Index of student 
     public Student getStudentIndex(int index){
         return listofStudents[index];
     }

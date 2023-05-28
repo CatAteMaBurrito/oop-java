@@ -1,6 +1,8 @@
 package stakeholders;
 public class Student extends Person {
     private String matricNum;
+    // if greater than or equal to 18
+    // Get permission from dean
     private int max_credit_hours_currentsem;
     private int totalcredithours;
     private double cgpa;
