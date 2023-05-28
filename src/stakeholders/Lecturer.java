@@ -35,6 +35,38 @@ public class Lecturer extends Person {
         );
     }
     // Request Course Change
-    
+    // 
+
+    public void setStaffNumber(String staffNumber) {
+        this.staffNumber = staffNumber;
+    }
+
+    public void setDeparment(String deparment) {
+        Deparment = deparment;
+    }
+
+    public void setFaculty(String faculty) {
+        Faculty = faculty;
+    }
+
+    public void setCourses(Course[] courses) {
+        this.courses = courses;
+    }
+
+    public String getStaffNumber() {
+        return staffNumber;
+    }
+
+    public String getDeparment() {
+        return Deparment;
+    }
+
+    public String getFaculty() {
+        return Faculty;
+    }
+
+    public Course[] getCourses() {
+        return courses;
+    }
 
 }
