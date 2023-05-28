@@ -1,5 +1,7 @@
 package stakeholders;
 
+import java.util.Vector;
+
 // The association to the class Lecturer is done with Key: Section + Course Code
 // Only Academic Officer can create and edit Courses
 // Best to declare array of courses
@@ -11,7 +13,7 @@ public class Course {
     private final int MAX_STUDENT = 35;
     private int creditHours;
     private Lecturer lecturer;
-    private Student[] listofStudents = new Student[MAX_STUDENT];
+    private Vector<Student> listofStudents = new Vector<Student>(1);
 
     public Course(){
         this.courseName = null;
@@ -68,13 +70,39 @@ public class Course {
         this.lecturer = lecturer;
     }
 
-    public void setListofStudents(Student[] listofStudents) {
-        this.listofStudents = listofStudents;
-    }
+    // public void setListofStudents(Student[] listofStudents) {
+    //     this.listofStudents = listofStudents;
+    // }
 
     // set specific student information
-    public void setStudentAtIndex(Student student, int index){
-        listofStudents[index] = student;
+    // public void setStudentAtIndex(Student student, int index){
+    //     listofStudents.set(index, student);
+    // }
+    // add new student
+    public boolean addNewStudent(Student student){
+        if(listofStudents.size() == MAX_STUDENT){
+            System.out.println("Section is full");
+            return false;
+        }else{
+            listofStudents.add(student);
+            return true;
+        }
+    }
+    public void delteStudent(Student student){
+        for(int i = 0; i < getSizeOfStudentList(); i++){
+            if(student == listofStudents.elementAt(i)){
+                listofStudents.add(i, null);
+            }
+        }
+    }
+    public void printAllStudents(){
+        for(Student x:listofStudents){
+            System.out.println(x.getName());
+        }
+    }
+
+    public int getSizeOfStudentList(){
+        return listofStudents.size();
     }
 
     public String getCourseName() {
@@ -101,14 +129,14 @@ public class Course {
         return lecturer;
     }
 
-    public Student[] getListofStudents() {
+    public Vector<Student> getListofStudents() {
         return listofStudents;
     }
 
     // Get Index of student 
-    public Student getStudentIndex(int index){
-        return listofStudents[index];
-    }
+    // public Student getStudentIndex(int index){
+    //     return listofStudents[index];
+    // }
 
     public int getMAX_STUDENT() {
         return MAX_STUDENT;
