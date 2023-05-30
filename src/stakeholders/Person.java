@@ -1,5 +1,5 @@
 package stakeholders;
-public class Person {
+public abstract class Person {
     protected String name;
     protected int yob;
     protected String ID;

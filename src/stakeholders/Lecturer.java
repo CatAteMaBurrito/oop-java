@@ -11,6 +11,16 @@ public class Lecturer extends Person {
         this.staffNumber = staffNumber;
         Deparment = deparment;
     }
+    // Get Couse Index
+    public int getCourseIndex(Course course){
+        for(int i = 0; i < 2; i ++){
+            if(course == courses[i]){
+                return i;
+            }
+        }
+        return 2;
+    }
+
     // Check Course Information
     public void checkCourseInfo(int index){
         System.out.println(

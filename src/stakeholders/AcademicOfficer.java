@@ -11,78 +11,62 @@ public class AcademicOfficer extends Person {
         super(name, yob, iD, nationality, gender, faculty);
         this.email = email;
     }
-
-    public Vector<Course> getListofallCourses() {
-        return listofallCourses;
-    }
-
-    public Vector<Student> getListofallStudents() {
-        return listofallStudents;
-    }
-
-    
-
-    public void setListofallCourses(Vector<Course> listofallCourses) {
-        this.listofallCourses = listofallCourses;
-    }
-
-    public void addCourse(Course course){
-        listofallCourses.add(course);
-    }
-
-    public void setListofallStudents(Vector<Student> listofallStudents) {
-        this.listofallStudents = listofallStudents;
-    }
-
-    // Add new student to listofstudents
-    public void addNewStudent(Student student){
-        listofallStudents.add(student);
-    }
-
     // create a new course
     public Course createNewCourse(String courseName, String courseCode, int section, String faculty, int creditHours){
         Course newcourse = new Course(courseName, courseCode, section, faculty, creditHours);
         this.listofallCourses.add(newcourse);
         return newcourse;
     }
+    // Functions for the Academic Officer
+    /*
+        1. browse and view student list & subject list
+        2. edit existing course
+            - Change course section
+    */
     // Browser List of all students 
     public void browseStudents(Vector<Student> studentslist){
+        System.out.printf("%35s", "Name");
+        System.out.printf("%9s", "MatricNO");
         for(Student x: studentslist){
-            System.out.println(
-                "Name :" + x.getName() + "\n" +
-                "Matric No :" + x.getMatricNum() + "\n"
-            );
+            System.out.printf("%35s", x.getName());
+            System.out.printf("%9s", x.getMatricNum());
         }
     }
-
     // show list of all course under academic officer
     public void listallCourses(){
         if(listofallCourses.size() == 0){
             System.out.println("No courses exist !!!");
         }else{
+            System.out.printf("%10s", "Code");
+            System.out.printf("%10s", "Section");
+            System.out.printf("%20s", "Faculty");
             for(Course x: listofallCourses){
-                System.out.println(
-                    "Course Name :" + x.getCourseName() + "\n" +
-                    "Course Code :" + x.getCourseCode() + "\n" +
-                    "Section :" + x.getSection() + "\n" +
-                    "Faculty :" + x.getFaculty() + "\n" );
+                    System.out.printf("%10s", x.getCourseCode());
+                    System.out.printf("%10d", x.getSection());
+                    System.out.printf("%20s", x.getFaculty());
             }
         }
         
     }
-    // browse and view student list & subject list
-    // edit existing course
-    // Change course section
+    // change course section
     public void editCourseSection(Course course){
         Scanner input = new Scanner(System.in);
         course.setSection(input.nextInt());
         input.close();
     }
 
-    public void changeLecturer(Lecturer lecturer,Course course){
-        Scanner input = new Scanner(System.in);
-        course.setLecturer(lecturer);
-        input.close();
+    public boolean dropLecturerFromCourse(Lecturer lecturer,Course course){
+        if(course.getLecturer() != null && lecturer.getCourseIndex(course) > 1){
+            course.setLecturer(null);
+            lecturer.setCourses(null);
+            return true;
+        }else if( lecturer.getCourseIndex(course) > 1){
+            // tell the lecturer this isn't his course
+            return false;
+        }else{
+            // Tell the lecturer this section doesn't have a lecturer
+            return false; 
+        }
     }
 
     public void changeStudent(Student student,Course course){

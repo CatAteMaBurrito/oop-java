@@ -13,7 +13,7 @@ public class Course {
     private final int MAX_STUDENT = 35;
     private int creditHours;
     private Lecturer lecturer;
-    private Vector<Student> listofStudents = new Vector<Student>(1);
+    private Vector<Student> listofStudents = new Vector<Student>(0);
 
     public Course(){
         this.courseName = null;

@@ -7,7 +7,6 @@ import stakeholders.Student;
 public class App {
 
     public static AcademicOfficer officer1 = new AcademicOfficer("Officer1", 1984, "200111023", "Malaysian", true, "Faculty of Computer Science", "Officer1@utm.my");
-
     public static Course course1 = new Course("Java Programming", "SECJ2033", 1, "Computer", 1);
     public static Course course2 = new Course("Data Structures", "SECD3044", 2, "Computer", 2);
     public static Course course3 = new Course("Database Management", "SECC4055", 3, "Computer", 3);
