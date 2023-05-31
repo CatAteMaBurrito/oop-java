@@ -12,4 +12,12 @@ public class Student extends Person{
         return matricNo;
     }
 
+    public Request requestSectionChange(Course oldCourse, Course newCourse){
+        return new Request(matricNo, oldCourse.getCode(), oldCourse.getSection(), newCourse.getSection(), 1);
+    }
+
+    public Request requestCourseDrop(Course course){
+        return new Request(matricNo, course.getCode(), course.getSection(),0);
+    }
+
 }
