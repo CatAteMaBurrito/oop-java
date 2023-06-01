@@ -1,44 +1,23 @@
 package Entities;
 import java.util.Vector;
 public class AcademicOfficer extends Person {
+    // Unique reference for Academic Officer
     private String email;
-    // private Vector<Course> listofallCourses = new Vector<Course>(4);
-    // private Vector<Student> listofallStudents = new Vector<Student>(30);
-    // private Vector<Lecturer> listofallLecturers = new Vector<Lecturer>(20);
+    // handles requests made by students
+    private RequestHandeling requestsHandeling = new RequestHandeling(this.email);
 
-    private Vector<Request> requests = new Vector<Request>(0);
-
-    public void showRequests(){
-        if(requests.size() != 0){
-            for(Request x: requests){
-                System.out.printf("[%s] From [%s] For [%s] \n", x.getCourseCode(), x.getID_refrence(), x.getType());
-            }
-        } 
+    public void viewNewRequests(){
+        requestsHandeling.showRequests();
     }
 
-    public void addRequest(Request request){
-        requests.add(request);
+    public void addNewRequest(Request request){
+        requestsHandeling.addRequest(request);
     }
 
     public AcademicOfficer(String name, String email) {
         super(name);
         this.email = email;
     }
-
-
-    // // All the following functions are for testing only 
-    // //Add All Existing Courses
-    // public void addCourse(Course course){
-    //     listofallCourses.add(course);
-    // }
-    // //Add All Existing Lecturer
-    // public void addLecturer(Lecturer lecturer){
-    //     listofallLecturers.add(lecturer);
-    // }
-    // //Add All Existing Students
-    // public void addStudent(Student student){
-    //     listofallStudents.add(student);
-    // }
 
     // Browse Students
     public void browseStudents(Vector<Student> studentslist){

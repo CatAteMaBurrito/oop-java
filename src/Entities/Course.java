@@ -77,6 +77,6 @@ public class Course {
     }
 
     public void printCourseInfo(){
-        System.out.printf(" %-10s %-4s", code, section);
+        System.out.printf(" %-10s %-4s \n", code, section);
     }
 }

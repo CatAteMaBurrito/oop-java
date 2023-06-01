@@ -1,7 +1,7 @@
 import java.util.*;
 import Entities.*;
 
-public class App {
+public class Interface {
     public static Vector<Course> allCourses = new Vector<Course>(0);
     public static Vector<AcademicOfficer> allAO = new Vector<AcademicOfficer>(0);
     public static Vector<Student> allStu = new Vector<Student>(0);
@@ -79,46 +79,43 @@ public class App {
         allCourses.get(0).addStudent(allStu.get(2), false);
         allCourses.get(0).addStudent(allStu.get(3), false);
         allCourses.get(0).addStudent(allStu.get(4), false);
-        allCourses.get(1).addStudent(allStu.get(5), false);
-        allCourses.get(1).addStudent(allStu.get(6), false);
-        allCourses.get(1).addStudent(allStu.get(7), false);
-        allCourses.get(1).addStudent(allStu.get(8), false);
-        allCourses.get(1).addStudent(allStu.get(9), false);
+        allCourses.get(0).addStudent(allStu.get(5), false);
+
     }
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         Declare_All_Variables();
-        StuIF(allStu.get(0), input);
-        StuIF(allStu.get(0), input);
-        StuIF(allStu.get(0), input);
-        AOIF(allAO.get(0), input);
-        // boolean choice = true;
-        // menu();
-        // do{
-        //     switch(input.nextInt()){
-        //         case 1:
-                    
-        //             break;
-        //         case 2:
-                    
-        //             break;
-        //         default:
-        //             choice = false;
-        //             break;
-        //     }
-        // }while(choice);
+        menu();
+        int choice = input.nextInt();
+        input.nextLine();
+        if(choice == 1){
+            while(AOIF(allAO.get(0), input));
+        }else if(choice == 3){
+            while(StuIF(allStu.get(0), input));
+        }else{
+            System.out.println("Exiting . . .");
+        }
         input.close();
     }
     public static void menu(){
         System.out.println("----------------------");
         System.out.println(" [1] Academic Officer ");
-        System.out.println(" [1] Lecturer ");
-        System.out.println(" [1] Student ");
+        System.out.println(" [null] Lecturer ");
+        System.out.println(" [3] Student ");
+        System.out.println(" [0] Exit");
         System.out.println("----------------------");
 
     }
+ 
+// AO Section -------------------------------------------------------------------------------------------
 
-    public static void AOIF(AcademicOfficer officer, Scanner input){
+    public static boolean AOIF(AcademicOfficer officer, Scanner input){
+        System.out.println("-----------------------");
+        System.out.println("[1] View All Courses");
+        System.out.println("[2] View All Students");
+        System.out.println("[3] View New Requests");
+        System.out.println("[0] Exit");
+        System.out.println("-----------------------");
         switch (input.nextInt()) {
             case 1:
                 officer.listallCourses(allCourses);
@@ -127,29 +124,49 @@ public class App {
                 officer.browseStudents(allStu);
                 break;
             case 3: 
-                officer.showRequests();
+                officer.viewNewRequests();
                 break;
             default:
-                break;
+                System.out.println("");
+                input.nextLine();
+                return false;
         }
+        return true;
     }
 
-    public static void StuIF(Student student, Scanner input){
+// Student Sections ---------------------------------------------------------------------------------------------
+
+    public static boolean StuIF(Student student, Scanner input){
+        System.out.println("--------------------------");
+        System.out.println("[1] Make a New Request");
+        System.out.println("[2] View Registered Courses");
+        System.out.println("[3] View Request History");
+        System.out.println("[0] Exit");
+        System.out.println("--------------------------");
         switch (input.nextInt()){
             case 1:
                 Request newrequest =  student.requestCourseDrop(allCourses.get(0));
-                allAO.get(0).addRequest(newrequest);
+                allAO.get(0).addNewRequest(newrequest);
+                student.setRequesthistory(newrequest);
+                break;
+            case 2:
+            System.out.printf(" %-10s %-4s \n", "CODE", "SECTION");
+                for(Course x: allCourses){
+                    if(x.checkStudent(student)){
+                        x.printCourseInfo();
+                    }
+                }
+                break;
+            case 3:
+                student.getRequesthistory();
                 break;
             default:
-                break;
+                System.out.println("Exiting . . . press any button to continue");
+                input.nextLine();
+                return false;
         }
-        
+        return true;
     }
 
-    public static void studentCourses(Student student, Vector<Course> courses){
-        for (Course x: courses) {
-            x.checkStudent(student);
-            x.printCourseInfo();
-        }
-    }
+
 }

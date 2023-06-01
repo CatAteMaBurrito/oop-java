@@ -42,6 +42,10 @@ public class Request {
             return "Droping Course";
         }
     }
+
+    public int getTypeIndex(){
+        return this.type;
+    }
     public void setType(int type) {
         this.type = type;
     }
