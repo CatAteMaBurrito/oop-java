@@ -108,12 +108,31 @@ public class Interface {
     }
  
 // AO Section -------------------------------------------------------------------------------------------
+    /*
+     * The functions AcademicOfficer Should do
+     *  1. View All the Courers
+     *  2. View All the Students
+     *  3. View All the Lecturer
+     *  4. Set the the time for admendment
+     *       ( if time for admentment then students can change section if avaiable space and if not request section change)
+     *       ( else can request course drop)
+     *  5. Set the registration time
+     *      (if true then students can register and drop subject)
+     *  6. Set the lecturers for each subject
+     *  7. Make a new course and assign a lecturer to it
+     *  8. Change the lecturers section
+     *  9. Delete a Course
+     *  10. View all Requests
+     *  11. Change Student Section
+     *  12. Drop Student from Course
+     */
 
     public static boolean AOIF(AcademicOfficer officer, Scanner input){
         System.out.println("-----------------------");
         System.out.println("[1] View All Courses");
         System.out.println("[2] View All Students");
         System.out.println("[3] View New Requests");
+        System.out.println("[4] Vie");
         System.out.println("[0] Exit");
         System.out.println("-----------------------");
         switch (input.nextInt()) {
