@@ -41,6 +41,14 @@ public class Course {
             return false;
         }
     }
+    public boolean checkStudent(Student student){
+        for(Student s: listofStudents){
+            if(s == student){
+                return true;
+            }
+        }
+        return false;
+    }
     
     private Lecturer lecturer;
     public boolean removelecturer(){
@@ -66,5 +74,9 @@ public class Course {
         this.section = section;
         this.faculty = faculty;
         this.credithours = credithours;
+    }
+
+    public void printCourseInfo(){
+        System.out.printf(" %-10s %-4s \n", code, section);
     }
 }

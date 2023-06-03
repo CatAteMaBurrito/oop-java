@@ -1,38 +1,33 @@
 package Entities;
 import java.util.Vector;
 public class AcademicOfficer extends Person {
+    // Unique reference for Academic Officer
     private String email;
-    private Vector<Course> listofallCourses = new Vector<Course>(4);
-    private Vector<Student> listofallStudents = new Vector<Student>(30);
-    private Vector<Lecturer> listofallLecturers = new Vector<Lecturer>(20);
-    private Vector<Request> requests = new Vector<Request>(1);
+    // handles requests made by students
+    private RequestHandeling requestsHandeling = new RequestHandeling(this.email);
+
+    public void viewNewRequests(){
+        requestsHandeling.showRequests();
+    }
+
+    public void addNewRequest(Request request){
+        requestsHandeling.addRequest(request);
+    }
+
     public AcademicOfficer(String name, String email) {
         super(name);
         this.email = email;
     }
 
-
-    // All the following functions are for testing only 
-    //Add All Existing Courses
-    public void addCourse(Course course){
-        listofallCourses.add(course);
-    }
-    //Add All Existing Lecturer
-    public void addLecturer(Lecturer lecturer){
-        listofallLecturers.add(lecturer);
-    }
-    //Add All Existing Students
-    public void addStudent(Student student){
-        listofallStudents.add(student);
-    }
-
     // Browse Students
     public void browseStudents(Vector<Student> studentslist){
-        System.out.printf("%35s", "Name");
-        System.out.printf("%9s", "MatricNO");
+        System.out.printf("%-35s", "Name");
+        System.out.printf("%-9s", "MatricNO");
+        System.out.println();
         for(Student x: studentslist){
-            System.out.printf("%35s", x.getName());
-            System.out.printf("%9s", x.getMatricNo());
+            System.out.printf("%-35s", x.getName());
+            System.out.printf("%-9s", x.getMatricNo());
+            System.out.println();
         }
     }
 
@@ -41,18 +36,32 @@ public class AcademicOfficer extends Person {
         if(courseslist.size() == 0){
             System.out.println("No courses exist !!!");
         }else{
-            System.out.printf("%10s", "Code");
-            System.out.printf("%10s", "Section");
-            System.out.printf("%20s", "Faculty");
+            System.out.printf("%-10s", "Code");
+            System.out.printf("%-10s", "Section");
+            System.out.printf("%-20s", "Faculty");
+            System.out.println();
             for(Course x: courseslist){
-                    System.out.printf("%10s", x.getCode());
-                    System.out.printf("%10d", x.getSection());
-                    System.out.printf("%20s", x.getFaculty());
+                    System.out.printf("%-10s", x.getCode());
+                    System.out.printf("%-10s", x.getSection());
+                    System.out.printf("%-20s", x.getFaculty());
+                    System.out.println();
             }
         }
         
     }
     
+    // Browse Lecturer
+    public void listallLecturers(Vector<Lecturer> lecturerslist){
+        System.out.printf("%-35s", "Name");
+        System.out.printf("%-9s", "staffID");
+        System.out.println();
+        for(Lecturer x: lecturerslist){
+            System.out.printf("%-35s", x.getName());
+            System.out.printf("%-9s", x.getStaffid());
+            System.out.println();
+        }
+    }
+
     // Drop Student From Course
     public void dropStudent(Course course, Student student){
         if(course.removeStudent(student)){
