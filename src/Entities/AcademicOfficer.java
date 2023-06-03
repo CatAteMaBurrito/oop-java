@@ -50,6 +50,18 @@ public class AcademicOfficer extends Person {
         
     }
     
+    // Browse Lecturer
+    public void listallLecturers(Vector<Lecturer> lecturerslist){
+        System.out.printf("%-35s", "Name");
+        System.out.printf("%-9s", "staffID");
+        System.out.println();
+        for(Lecturer x: lecturerslist){
+            System.out.printf("%-35s", x.getName());
+            System.out.printf("%-9s", x.getStaffid());
+            System.out.println();
+        }
+    }
+
     // Drop Student From Course
     public void dropStudent(Course course, Student student){
         if(course.removeStudent(student)){

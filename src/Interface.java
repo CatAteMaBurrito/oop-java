@@ -82,19 +82,27 @@ public class Interface {
         allCourses.get(0).addStudent(allStu.get(5), false);
 
     }
+
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         Declare_All_Variables();
-        menu();
-        int choice = input.nextInt();
-        input.nextLine();
-        if(choice == 1){
-            while(AOIF(allAO.get(0), input));
-        }else if(choice == 3){
-            while(StuIF(allStu.get(0), input));
-        }else{
-            System.out.println("Exiting . . .");
-        }
+        int choice = 0;
+        do{
+            
+            menu();
+            choice = input.nextInt();
+            input.nextLine();
+            if(choice == 1){
+                
+                while(AOIF(allAO.get(0), input));
+            }else if(choice == 3){
+                
+                while(StuIF(allStu.get(0), input));
+            }else{
+                System.out.println("Exiting . . .");
+            }
+        }while(choice != 0);
+
         input.close();
     }
     public static void menu(){
@@ -131,25 +139,32 @@ public class Interface {
         System.out.println("-----------------------");
         System.out.println("[1] View All Courses");
         System.out.println("[2] View All Students");
-        System.out.println("[3] View New Requests");
-        System.out.println("[4] Vie");
+        System.out.println("[3] View All Lecturers");
+        System.out.println("[4] View New Requests");
         System.out.println("[0] Exit");
         System.out.println("-----------------------");
-        switch (input.nextInt()) {
+        switch (Integer.parseInt(input.nextLine())) {
             case 1:
+                
                 officer.listallCourses(allCourses);
                 break;
             case 2:
+                
                 officer.browseStudents(allStu);
                 break;
-            case 3: 
+            case 3:
+                officer.listallLecturers(allProfs);
+                break;
+            case 4: 
+                
                 officer.viewNewRequests();
                 break;
             default:
-                System.out.println("");
+                System.out.println("Exiting . . . press any button to continue");
                 input.nextLine();
                 return false;
         }
+        
         return true;
     }
 
