@@ -1,6 +1,6 @@
 package Entities;
 
-public class Lecturer extends Person{
+public class Lecturer extends Person {
     private String staffid;
 
     public Lecturer(String name, String staffid) {
@@ -11,5 +11,5 @@ public class Lecturer extends Person{
     public String getStaffid() {
         return staffid;
     }
-    
+
 }
