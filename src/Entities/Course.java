@@ -41,6 +41,21 @@ public class Course {
 
     }
 
+    public void listAllStudents() {
+        System.out.println("List of assigned students for the course : ");
+        printCourseInfo();
+        System.out.println("\nStudent List");
+        int i = 0;
+        if (listofStudents.isEmpty()) {
+            System.out.println("No students have enrolled for the course yet.");
+        } else {
+            for (Student tempStudent : listofStudents) {
+                System.out.println("(" + i + ") " + tempStudent.getName() + " (" + tempStudent.getMatricNo() + ")");
+                i++;
+            }
+        }
+    }
+
     public boolean addStudent(Student student, boolean forced_Insertion) {
         if (listofStudents.size() < 35 || forced_Insertion == true) {
             listofStudents.add(student);
