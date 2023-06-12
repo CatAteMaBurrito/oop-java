@@ -1,4 +1,5 @@
 package Entities;
+
 import java.util.Vector;
 
 public class RequestHandeling {
@@ -16,18 +17,18 @@ public class RequestHandeling {
     public Vector<Request> getRequests() {
         return requests;
     }
-    
+
     private Vector<Request> requests = new Vector<Request>(0);
 
-    public void showRequests(){
-        if(requests.size() != 0){
-            for(Request x: requests){
+    public void showRequests() {
+        if (requests.size() != 0) {
+            for (Request x : requests) {
                 System.out.printf("[%s] From [%s] For [%s] \n", x.getCourseCode(), x.getID_refrence(), x.getType());
             }
-        } 
+        }
     }
 
-    public void addRequest(Request request){
+    public void addRequest(Request request) {
         requests.add(request);
     }
 }
