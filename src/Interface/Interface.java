@@ -1,7 +1,8 @@
 package Interface;
 
 import java.util.*;
-import Entities.*;
+
+import Model.*;
 
 public class Interface {
     public static Vector<Course> allCourses = new Vector<Course>(0);

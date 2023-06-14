@@ -1,13 +1,18 @@
+<<<<<<< HEAD:src/Model/Student.java
+package Model;
+=======
 package Entities;
 
+>>>>>>> 5da6cb031a76b633384c57d3bd9e8b55aaf93331:src/Entities/Student.java
 import java.util.Vector;;
 
 public class Student extends Person {
     private String matricNo;
     private Vector<Request> requesthistory = new Vector<Request>(0);
+    private Vector<Course> registeredCourses = new Vector<Course>(0);
 
-    public Student(String name, String matricNo) {
-        super(name);
+    public Student(String name, Faculty faculty, String matricNo) {
+        super(name, faculty);
         this.matricNo = matricNo;
     }
 
