@@ -1,10 +1,10 @@
-package Entities;
+package Model;
 
 public class Lecturer extends Person{
     private String staffid;
 
-    public Lecturer(String name, String staffid) {
-        super(name);
+    public Lecturer(String name, Faculty faculty, String staffid) {
+        super(name, faculty);
         this.staffid = staffid;
     }
 

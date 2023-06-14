@@ -1,13 +1,13 @@
-import java.util.*;
+import java.util.Vector;
 
 import Model.*;
 
-public class Interface {
+public class Database {
     public static Vector<Course> allCourses = new Vector<Course>(0);
     public static Vector<AcademicOfficer> allAO = new Vector<AcademicOfficer>(0);
     public static Vector<Student> allStu = new Vector<Student>(0);
     public static Vector<Lecturer> allProfs = new Vector<Lecturer>(0);
-    private static void Declare_All_Variables(){
+    public Database(){
         allStu.add(new Student("Lim Sha Kai", "A21EC4058"));
         allStu.add(new Student("Muhammad Farhan", "A21EC4059"));
         allStu.add(new Student("Nurul Amani", "A21EC4060"));
@@ -81,127 +81,8 @@ public class Interface {
         allCourses.get(0).addStudent(allStu.get(3), false);
         allCourses.get(0).addStudent(allStu.get(4), false);
         allCourses.get(0).addStudent(allStu.get(5), false);
+    }
+    public static void Declare_All_Variables(){
 
     }
-
-    public static void main(String[] args){
-        Scanner input = new Scanner(System.in);
-        Declare_All_Variables();
-        int choice = 0;
-        do{
-            
-            menu();
-            choice = input.nextInt();
-            input.nextLine();
-            if(choice == 1){
-                
-                while(AOIF(allAO.get(0), input));
-            }else if(choice == 3){
-                
-                while(StuIF(allStu.get(0), input));
-            }else{
-                System.out.println("Exiting . . .");
-            }
-        }while(choice != 0);
-
-        input.close();
-    }
-    public static void menu(){
-        System.out.println("----------------------");
-        System.out.println(" [1] Academic Officer ");
-        System.out.println(" [null] Lecturer ");
-        System.out.println(" [3] Student ");
-        System.out.println(" [0] Exit");
-        System.out.println("----------------------");
-
-    }
- 
-// AO Section -------------------------------------------------------------------------------------------
-    /*
-     * The functions AcademicOfficer Should do
-     *  1. View All the Courers
-     *  2. View All the Students
-     *  3. View All the Lecturer
-     *  4. Set the the time for admendment
-     *       ( if time for admentment then students can change section if avaiable space and if not request section change)
-     *       ( else can request course drop)
-     *  5. Set the registration time
-     *      (if true then students can register and drop subject)
-     *  6. Set the lecturers for each subject
-     *  7. Make a new course and assign a lecturer to it
-     *  8. Change the lecturers section
-     *  9. Delete a Course
-     *  10. View all Requests
-     *  11. Change Student Section
-     *  12. Drop Student from Course
-     */
-
-    public static boolean AOIF(AcademicOfficer officer, Scanner input){
-        System.out.println("-----------------------");
-        System.out.println("[1] View All Courses");
-        System.out.println("[2] View All Students");
-        System.out.println("[3] View All Lecturers");
-        System.out.println("[4] View New Requests");
-        System.out.println("[0] Exit");
-        System.out.println("-----------------------");
-        switch (Integer.parseInt(input.nextLine())) {
-            case 1:
-                
-                officer.listallCourses(allCourses);
-                break;
-            case 2:
-                
-                officer.browseStudents(allStu);
-                break;
-            case 3:
-                officer.listallLecturers(allProfs);
-                break;
-            case 4: 
-                
-                officer.viewNewRequests();
-                break;
-            default:
-                System.out.println("Exiting . . . press any button to continue");
-                input.nextLine();
-                return false;
-        }
-        
-        return true;
-    }
-
-// Student Sections ---------------------------------------------------------------------------------------------
-
-    public static boolean StuIF(Student student, Scanner input){
-        System.out.println("--------------------------");
-        System.out.println("[1] Make a New Request");
-        System.out.println("[2] View Registered Courses");
-        System.out.println("[3] View Request History");
-        System.out.println("[0] Exit");
-        System.out.println("--------------------------");
-        switch (input.nextInt()){
-            case 1:
-                Request newrequest =  student.requestCourseDrop(allCourses.get(0));
-                allAO.get(0).addNewRequest(newrequest);
-                student.setRequesthistory(newrequest);
-                break;
-            case 2:
-            System.out.printf(" %-10s %-4s \n", "CODE", "SECTION");
-                for(Course x: allCourses){
-                    if(x.checkStudent(student)){
-                        x.printCourseInfo();
-                    }
-                }
-                break;
-            case 3:
-                student.getRequesthistory();
-                break;
-            default:
-                System.out.println("Exiting . . . press any button to continue");
-                input.nextLine();
-                return false;
-        }
-        return true;
-    }
-
-
 }

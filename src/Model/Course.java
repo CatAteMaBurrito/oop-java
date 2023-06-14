@@ -1,10 +1,10 @@
-package Entities;
+package Model;
 import java.util.Vector;
 public class Course {
     private String name;
     private String code;
     private int section;
-    private String faculty;
+    private Faculty faculty;
     private int credithours;
 
     public String getName() {
@@ -16,7 +16,7 @@ public class Course {
     public int getSection() {
         return section;
     }
-    public String getFaculty() {
+    public Faculty getFaculty() {
         return faculty;
     }
     public int getCredithours() {
@@ -68,7 +68,7 @@ public class Course {
         }
     }
 
-    public Course(String name, String code, int section, String faculty, int credithours) {
+    public Course(String name, String code, int section, Faculty faculty, int credithours) {
         this.name = name;
         this.code = code;
         this.section = section;
@@ -76,7 +76,4 @@ public class Course {
         this.credithours = credithours;
     }
 
-    public void printCourseInfo(){
-        System.out.printf(" %-10s %-4s \n", code, section);
-    }
 }
