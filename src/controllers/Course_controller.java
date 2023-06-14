@@ -1,43 +1,24 @@
-package Entities;
+package controllers;
 
 import java.util.Vector;
 
-public class Course {
-    private String name;
-    protected String code;
-    protected int section;
-    private String faculty;
-    private int credithours;
+import Entities.Course;
+import Entities.Student;
+import Entities.Lecturer;
 
-    public Course(String name, String code, int section, String faculty, int credithours) {
-        this.name = name;
-        this.code = code;
-        this.section = section;
-        this.faculty = faculty;
-        this.credithours = credithours;
+
+public class Course_controller extends Course {
+
+    private Vector<Student> listofStudents;
+
+    public Course_controller(String name, String code, int section, String faculty, int credithours, Vector<Student> listofAllStudents){
+        super(name, code, section, faculty, credithours);
+        this.listofStudents = listofAllStudents;
     }
 
-    public String getName() {
-        return name;
+    public void setListofStudents(Vector<Student> listofStudents) {
+        this.listofStudents = listofStudents;
     }
-
-    public String getCode() {
-        return code;
-    }
-
-    public int getSection() {
-        return section;
-    }
-
-    public String getFaculty() {
-        return faculty;
-    }
-
-    public int getCredithours() {
-        return credithours;
-    }
-
-    protected Vector<Student> listofStudents = new Vector<Student>(0);
 
     public boolean removeStudent(Student student) {
         if (listofStudents.size() == 0) {
@@ -104,4 +85,5 @@ public class Course {
     public void printCourseInfo() {
         System.out.printf(" %-10s %-4s \n", code, section);
     }
+
 }

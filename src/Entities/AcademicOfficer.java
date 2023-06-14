@@ -16,6 +16,14 @@ public class AcademicOfficer extends Person {
         requestsHandeling.addRequest(request);
     }
 
+    public void findCourse(String name, Vector<Course> allCourses){
+        for(Course c:allCourses){
+            if(c.getName().equals(name)){
+                c.printCourseInfo();
+            }
+        }
+    }
+
     public AcademicOfficer(String name, String email) {
         super(name);
         this.email = email;

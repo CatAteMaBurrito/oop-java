@@ -1,3 +1,5 @@
+package Interface;
+
 import java.util.*;
 import Entities.*;
 
@@ -7,7 +9,7 @@ public class Interface {
     public static Vector<Student> allStu = new Vector<Student>(0);
     public static Vector<Lecturer> allProfs = new Vector<Lecturer>(0);
 
-    private static void Declare_All_Variables() {
+    public static void Declare_All_Variables() {
         allStu.add(new Student("Lim Sha Kai", "A21EC4058"));
         allStu.add(new Student("Muhammad Farhan", "A21EC4059"));
         allStu.add(new Student("Nurul Amani", "A21EC4060"));
@@ -81,36 +83,10 @@ public class Interface {
         allCourses.get(0).addStudent(allStu.get(3), false);
         allCourses.get(0).addStudent(allStu.get(4), false);
         allCourses.get(0).addStudent(allStu.get(5), false);
-
     }
 
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        Declare_All_Variables();
-        int choice = 0;
-        do {
 
-            menu();
-            choice = input.nextInt();
-            input.nextLine();
-            if (choice == 1) {
-
-                while (AOIF(allAO.get(0), input))
-                    ;
-            } else if (choice == 2) {
-                while (Lecturer(allProfs.get(0), input))
-                    ;
-            } else if (choice == 3) {
-                while (StuIF(allStu.get(0), input))
-                    ;
-            } else {
-                System.out.println("Exiting . . .");
-            }
-        } while (choice != 0);
-
-        input.close();
-    }
-
+    
     public static void menu() {
         System.out.println("----------------------");
         System.out.println(" [1] Academic Officer ");
@@ -149,11 +125,11 @@ public class Interface {
         System.out.println("[2] View All Students");
         System.out.println("[3] View All Lecturers");
         System.out.println("[4] View New Requests");
+        System.out.println("[5] Search Course");
         System.out.println("[0] Exit");
         System.out.println("-----------------------");
         switch (Integer.parseInt(input.nextLine())) {
             case 1:
-
                 officer.listallCourses(allCourses);
                 break;
             case 2:
@@ -164,8 +140,11 @@ public class Interface {
                 officer.listallLecturers(allProfs);
                 break;
             case 4:
-
                 officer.viewNewRequests();
+                break;
+            case 5:
+                String code = input.nextLine();
+                officer.findCourse(code, allCourses);
                 break;
             default:
                 System.out.println("Exiting . . . press any button to continue");
@@ -219,6 +198,7 @@ public class Interface {
         System.out.println("[4] View Assigned Students");
         System.out.println("[0] Exit");
         System.out.println("-----------------------");
+        
         switch (Integer.parseInt(input.nextLine())) {
             case 1:
                 lecturer.displayAssignedCourses();

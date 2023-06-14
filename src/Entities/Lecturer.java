@@ -1,4 +1,5 @@
 package Entities;
+import controllers.Course_controller;
 
 import java.util.ArrayList;
 
