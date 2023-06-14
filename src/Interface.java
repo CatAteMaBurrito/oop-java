@@ -1,11 +1,13 @@
 import java.util.*;
 import Entities.*;
+import controllers.Lecturer_Controller;
+import models.*;
 
 public class Interface {
     public static Vector<Course> allCourses = new Vector<Course>(0);
     public static Vector<AcademicOfficer> allAO = new Vector<AcademicOfficer>(0);
     public static Vector<Student> allStu = new Vector<Student>(0);
-    public static Vector<Lecturer> allProfs = new Vector<Lecturer>(0);
+    public static Vector<Lecturer_Model> allProfs = new Vector<Lecturer_Model>(0);
 
     private static void Declare_All_Variables() {
         allStu.add(new Student("Lim Sha Kai", "A21EC4058"));
@@ -53,16 +55,16 @@ public class Interface {
         allAO.add(new AcademicOfficer("Ahmad bin Ismail", "ahmadismail@admin.utm.my"));
         allAO.add(new AcademicOfficer("Nurul Huda binti Abdullah", "nurulhudaabdullah@admin.utm.my"));
         allAO.add(new AcademicOfficer("Muhammad Zulkarnain", "mzulkarnain@admin.utm.my"));
-        allProfs.add(new Lecturer("Ahmad bin Ismail", "FC001P"));
-        allProfs.add(new Lecturer("Siti Nurul Aini", "FC002N"));
-        allProfs.add(new Lecturer("Muhammad Zulkarnain", "FC003I"));
-        allProfs.add(new Lecturer("Nurul Huda binti Abdullah", "FC004P"));
-        allProfs.add(new Lecturer("Nurul Izzah binti Mohd", "FC011N"));
-        allProfs.add(new Lecturer("Ahmad Zahir", "FC012I"));
-        allProfs.add(new Lecturer("Siti Maisarah", "FC013P"));
-        allProfs.add(new Lecturer("Abdul Hadi", "FC014N"));
-        allProfs.add(new Lecturer("Norazlina binti Mohd", "FC015I"));
-        allProfs.add(new Lecturer("Bob Williams", "FC008N"));
+        allProfs.add(new Lecturer_Model("Ahmad bin Ismail", "FC001P"));
+        allProfs.add(new Lecturer_Model("Siti Nurul Aini", "FC002N"));
+        allProfs.add(new Lecturer_Model("Muhammad Zulkarnain", "FC003I"));
+        allProfs.add(new Lecturer_Model("Nurul Huda binti Abdullah", "FC004P"));
+        allProfs.add(new Lecturer_Model("Nurul Izzah binti Mohd", "FC011N"));
+        allProfs.add(new Lecturer_Model("Ahmad Zahir", "FC012I"));
+        allProfs.add(new Lecturer_Model("Siti Maisarah", "FC013P"));
+        allProfs.add(new Lecturer_Model("Abdul Hadi", "FC014N"));
+        allProfs.add(new Lecturer_Model("Norazlina binti Mohd", "FC015I"));
+        allProfs.add(new Lecturer_Model("Bob Williams", "FC008N"));
         allCourses.add(new Course("Object Oriented Programming", "SECJ2154", 1, "Computing", 4));
         allCourses.add(new Course("Object Oriented Programming", "SECJ2154", 2, "Computing", 4));
         allCourses.add(new Course("Object Oriented Programming", "SECJ2154", 3, "Computing", 4));
@@ -98,7 +100,7 @@ public class Interface {
                 while (AOIF(allAO.get(0), input))
                     ;
             } else if (choice == 2) {
-                while (Lecturer(allProfs.get(0), input))
+                while (LecturerIF(allProfs.get(0), input))
                     ;
             } else if (choice == 3) {
                 while (StuIF(allStu.get(0), input))
@@ -211,7 +213,9 @@ public class Interface {
         return true;
     }
 
-    public static boolean Lecturer(Lecturer lecturer, Scanner input) {
+    public static boolean LecturerIF(Lecturer_Model lecturer, Scanner input) {
+        Lecturer_Controller lc = new Lecturer_Controller(lecturer);
+
         System.out.println("-----------------------");
         System.out.println("[1] View Assigned Courses");
         System.out.println("[2] Add New Course");
@@ -221,7 +225,7 @@ public class Interface {
         System.out.println("-----------------------");
         switch (Integer.parseInt(input.nextLine())) {
             case 1:
-                lecturer.displayAssignedCourses();
+                lc.displayAssignedCourses();
                 break;
             case 2:
                 int i = 1;
@@ -232,16 +236,16 @@ public class Interface {
                 }
                 System.out.print("\nPlease enter the index of the course you would like to enroll for => ");
                 int enrollSelection = Integer.parseInt(input.nextLine()) - 1;
-                lecturer.enrollCourse(allCourses.get(enrollSelection));
+                lc.enrollCourse(allCourses.get(enrollSelection));
                 break;
             case 3:
                 System.out.print("\nPlease enter the index of the course you would like to unenroll => ");
-                lecturer.displayAssignedCourses();
+                lc.displayAssignedCourses();
                 int lecturerSelection = Integer.parseInt(input.nextLine()) - 1;
-                lecturer.deleteCourse(lecturerSelection);
+                lc.deleteCourse(lecturerSelection);
                 break;
             case 4:
-                lecturer.viewAssignedStudents();
+                lc.viewAssignedStudents();
                 break;
             default:
                 System.out.println("Exiting . . . press any button to continue");

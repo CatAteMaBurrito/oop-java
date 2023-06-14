@@ -1,5 +1,7 @@
 package Entities;
 
+import models.*;
+
 import java.util.Vector;
 
 public class AcademicOfficer extends Person {
@@ -53,11 +55,11 @@ public class AcademicOfficer extends Person {
     }
 
     // Browse Lecturer
-    public void listallLecturers(Vector<Lecturer> lecturerslist) {
+    public void listallLecturers(Vector<Lecturer_Model> lecturerslist) {
         System.out.printf("%-35s", "Name");
         System.out.printf("%-9s", "staffID");
         System.out.println();
-        for (Lecturer x : lecturerslist) {
+        for (Lecturer_Model x : lecturerslist) {
             System.out.printf("%-35s", x.getName());
             System.out.printf("%-9s", x.getStaffid());
             System.out.println();
@@ -90,7 +92,7 @@ public class AcademicOfficer extends Person {
     }
 
     // Change Lecturer From Course
-    public void changeLecturerSection(Course oldCourse, Course newCourse, Lecturer lecturer) {
+    public void changeLecturerSection(Course oldCourse, Course newCourse, Lecturer_Model lecturer) {
         if (newCourse.addLecturer(lecturer)) {
             oldCourse.removelecturer();
         } else {

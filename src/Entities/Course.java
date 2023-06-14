@@ -1,5 +1,7 @@
 package Entities;
 
+import models.*;
+
 import java.util.Vector;
 
 public class Course {
@@ -74,7 +76,7 @@ public class Course {
         return false;
     }
 
-    private Lecturer lecturer;
+    private Lecturer_Model lecturer;
 
     public boolean removelecturer() {
         if (lecturer == null) {
@@ -85,7 +87,7 @@ public class Course {
         }
     }
 
-    public boolean addLecturer(Lecturer lecturer) {
+    public boolean addLecturer(Lecturer_Model lecturer) {
         if (this.lecturer != null) {
             return false;
         } else {
