@@ -16,6 +16,9 @@ public class AcademicOfficer_controller {
         this.view = view;
     }
 
+    public void addNewRequest(Request request){
+        model.getListofRequests().add(request);
+    }
     // Drop Student From Course
     public void dropStudent(Course course, Student student) {
         if (course.removeStudent(student)) {
@@ -91,3 +94,11 @@ public class AcademicOfficer_controller {
         view.PrintallRequest(model.getListofRequests());
     }
 }
+
+// Fixes for student controller
+/*
+ *         Request newrequest = new Request(this.model, course);
+        model.setRequesthistory(newrequest);
+        return newrequest;
+ * 
+ */
