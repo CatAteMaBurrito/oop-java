@@ -1,10 +1,12 @@
 package Views;
 
 import java.util.Vector;
+import java.util.ArrayList;
 
 import Model.Course;
 import Model.Lecturer;
 import Model.Student;
+import Model.Request;
 
 public class AcademicOfficer_view {
 
@@ -48,6 +50,14 @@ public class AcademicOfficer_view {
             System.out.printf("%-35s", x.getName().substring(0, 34));
             System.out.printf("%-9s", x.getMatricNo());
             System.out.println();
+        }
+    }
+
+    // Print all Requests
+    public void PrintallRequest(ArrayList<Request> listofRequests) {
+        for (Request x : listofRequests) {
+            System.out.printf(" %-2s", listofRequests.indexOf(x));
+            x.printRequestInfo();
         }
     }
 

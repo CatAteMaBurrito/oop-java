@@ -1,4 +1,5 @@
 package Model;
+
 import java.util.Vector;
 
 public class Course {
@@ -11,59 +12,68 @@ public class Course {
     public String getName() {
         return name;
     }
+
     public String getCode() {
         return code;
     }
+
     public int getSection() {
         return section;
     }
+
     public Faculty getFaculty() {
         return faculty;
     }
+
     public int getCredithours() {
         return credithours;
     }
 
     private Vector<Student> listofStudents = new Vector<Student>(0);
-    public boolean removeStudent(Student student){
-        if(listofStudents.size() == 0){
+
+    public boolean removeStudent(Student student) {
+        if (listofStudents.size() == 0) {
             return false;
-        }else{
+        } else {
             listofStudents.removeElement(student);
             return true;
         }
-        
-    }     
-    public boolean addStudent(Student student,boolean forced_Insertion){
-        if(listofStudents.size() < 35 || forced_Insertion == true){
+
+    }
+
+    public boolean addStudent(Student student, boolean forced_Insertion) {
+        if (listofStudents.size() < 35 || forced_Insertion == true) {
             listofStudents.add(student);
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    public boolean checkStudent(Student student){
-        for(Student s: listofStudents){
-            if(s == student){
+
+    public boolean checkStudent(Student student) {
+        for (Student s : listofStudents) {
+            if (s == student) {
                 return true;
             }
         }
         return false;
     }
-    
+
     private Lecturer lecturer;
-    public boolean removelecturer(){
-        if(lecturer == null){
+
+    public boolean removelecturer() {
+        if (lecturer == null) {
             return false;
-        }else{
+        } else {
             lecturer = null;
             return true;
         }
     }
-    public boolean addLecturer(Lecturer lecturer){
-        if(this.lecturer != null){
+
+    public boolean addLecturer(Lecturer lecturer) {
+        if (this.lecturer != null) {
             return false;
-        }else{
+        } else {
             this.lecturer = lecturer;
             return true;
         }
@@ -77,9 +87,14 @@ public class Course {
         this.credithours = credithours;
     }
 
-    public void PrintAllStudents(){
-        for(Student student: listofStudents){
+    public void PrintAllStudents() {
+        for (Student student : listofStudents) {
             System.out.printf("%-35s %-20s %-9s ", student.getName(), student.getFaculty(), student.getMatricNo());
         }
     }
+
+    public void printCourseInfo() {
+        System.out.printf("%-10s %-10s %-20s %-10s %-10s", code, section, name, faculty, credithours);
+    }
+
 }
