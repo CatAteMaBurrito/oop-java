@@ -11,7 +11,7 @@ interface Registrable {
 }
 
 public class Student_controller implements Registrable {
-    private Student model;
+    private Student model; // association
 
     public Student_controller(Student model) {
         this.model = model;

@@ -105,7 +105,7 @@ public class MainHandler {
      */
 
     public static boolean AOIF(AcademicOfficer AOF, Scanner input) {
-        AcademicOfficer_controller officer = new AcademicOfficer_controller(AOF, new AcademicOfficer_view());
+        AcademicOfficer_controller officer = new AcademicOfficer_controller(AOF, new AcademicOfficer_view()); // aggregation
         System.out.println("-----------------------");
         System.out.println("[1] View All Courses");
         System.out.println("[2] View All Students");
