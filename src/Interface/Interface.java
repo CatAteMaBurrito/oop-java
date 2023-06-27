@@ -2,7 +2,9 @@ package Interface;
 
 import java.util.*;
 
+import Controllers.AcademicOfficer_controller;
 import Model.*;
+import Views.AcademicOfficer_view;
 
 public class Interface {
     public static Vector<Course> allCourses = new Vector<Course>(0);
@@ -120,7 +122,8 @@ public class Interface {
      * 12. Drop Student from Course
      */
 
-    public static boolean AOIF(AcademicOfficer officer, Scanner input) {
+    public static boolean AOIF(AcademicOfficer AOF, Scanner input) {
+        AcademicOfficer_controller officer = new AcademicOfficer_controller(AOF, new AcademicOfficer_view());
         System.out.println("-----------------------");
         System.out.println("[1] View All Courses");
         System.out.println("[2] View All Students");
@@ -131,14 +134,14 @@ public class Interface {
         System.out.println("-----------------------");
         switch (Integer.parseInt(input.nextLine())) {
             case 1:
-                officer.listallCourses(allCourses);
+                officer.view.PrintAllCourses(allCourses);
                 break;
             case 2:
 
-                officer.browseStudents(allStu);
+                officer.view.PrintAllStudents(allStu);;
                 break;
             case 3:
-                officer.listallLecturers(allProfs);
+                officer.view.PrintAllLecturers(allProfs);;
                 break;
             case 4:
                 officer.viewNewRequests();

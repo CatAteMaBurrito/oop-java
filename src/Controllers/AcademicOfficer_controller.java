@@ -1,5 +1,7 @@
 package Controllers;
 
+import java.util.Vector;
+
 import Model.AcademicOfficer;
 import Model.Course;
 import Model.Lecturer;
@@ -73,11 +75,16 @@ public class AcademicOfficer_controller {
             System.out.println("Error: Request has both sturef & lecref as NULL");
         }
     }
+
     public void choosenRequest(int choice){
         try {
             preformRequest(model.getListofRequests().get(choice));
         } catch (Exception e) {
             System.out.println(choice + " is not a valid index ");
         }
+    }
+
+    public void print_out_list_of_student(Vector<Student> list){
+
     }
 }

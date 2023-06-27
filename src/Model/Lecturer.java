@@ -1,24 +1,15 @@
-<<<<<<< HEAD:src/Model/Lecturer.java
 package Model;
-=======
-package Entities;
-import controllers.Course_controller;
->>>>>>> 5da6cb031a76b633384c57d3bd9e8b55aaf93331:src/Entities/Lecturer.java
 
 import java.util.ArrayList;
 
 public class Lecturer extends Person {
     private String staffid;
 
-<<<<<<< HEAD:src/Model/Lecturer.java
-    public Lecturer(String name, Faculty faculty, String staffid) {
-        super(name, faculty);
-=======
     private ArrayList<Course> assignedCourses = new ArrayList<Course>();
 
-    public Lecturer(String name, String staffid) {
-        super(name);
->>>>>>> 5da6cb031a76b633384c57d3bd9e8b55aaf93331:src/Entities/Lecturer.java
+    
+    public Lecturer(String name, Faculty faculty, String staffid) {
+        super(name, faculty);
         this.staffid = staffid;
     }
 
@@ -28,13 +19,16 @@ public class Lecturer extends Person {
 
     public void enrollCourse(Course course) {
         System.out.println("Adding course : ");
-        course.printCourseInfo();
-        assignedCourses.add(course);
+        if(assignedCourses.add(course)){
+            course.addLecturer(this);
+        }else{
+            // print error
+        }
     }
 
     public void deleteCourse(int index) {
         System.out.println("Deleting course : ");
-        assignedCourses.get(index).printCourseInfo();
+        assignedCourses.get(index).removelecturer();
         assignedCourses.remove(index);
     }
 
