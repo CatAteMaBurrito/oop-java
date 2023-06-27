@@ -15,4 +15,8 @@ public class Lecturer extends Person {
         return staffid;
     }
 
+    public ArrayList<Course> getAssignedCourses() {
+        return assignedCourses;
+    }    
+
 }

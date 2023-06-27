@@ -1,25 +1,25 @@
 import java.util.Scanner;
 
-import MainHandler.HandleMain;
+import MainHandler.MainHandler;
 
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        HandleMain.Declare_All_Variables();
+        MainHandler.Declare_All_Variables();
         int choice = 0;
         do {
 
-            HandleMain.menu();
+            MainHandler.menu();
             choice = input.nextInt();
             input.nextLine();
             if (choice == 1) {
-                while (HandleMain.AOIF(HandleMain.allAO.get(0), input))
+                while (MainHandler.AOIF(MainHandler.allAO.get(0), input))
                     ;
             } else if (choice == 2) {
-                while (HandleMain.LecturerIF(HandleMain.allProfs.get(0), input))
+                while (MainHandler.LecturerIF(MainHandler.allProfs.get(0), input))
                     ;
             } else if (choice == 3) {
-                while (HandleMain.StuIF(HandleMain.allStu.get(0), input))
+                while (MainHandler.StuIF(MainHandler.allStu.get(0), input))
                     ;
             } else {
                 System.out.println("Exiting . . .");
