@@ -6,6 +6,7 @@ import Controllers.AcademicOfficer_controller;
 import Controllers.Lecturer_controller;
 import Model.*;
 import Views.AcademicOfficer_view;
+import Views.Lecturer_view;
 
 public class HandleMain {
     public static Vector<Course> allCourses = new Vector<Course>(0);
@@ -186,7 +187,8 @@ public class HandleMain {
     }
 
     public static boolean LecturerIF(Lecturer lecturer, Scanner input) {
-        Lecturer_controller lc = new Lecturer_controller(lecturer);
+        Lecturer_view view = new Lecturer_view();
+        Lecturer_controller lc = new Lecturer_controller(lecturer, view);
 
         System.out.println("-----------------------");
         System.out.println("[1] View Assigned Courses");
@@ -197,7 +199,7 @@ public class HandleMain {
         System.out.println("-----------------------");
         switch (Integer.parseInt(input.nextLine())) {
             case 1:
-                lc.displayAssignedCourses();
+                lc.getAssignedCourses();
                 break;
             case 2:
                 int i = 1;
@@ -211,13 +213,13 @@ public class HandleMain {
                 lc.enrollCourse(allCourses.get(enrollSelection));
                 break;
             case 3:
+                lc.getAssignedCourses();
                 System.out.print("\nPlease enter the index of the course you would like to unenroll => ");
-                lc.displayAssignedCourses();
                 int lecturerSelection = Integer.parseInt(input.nextLine()) - 1;
                 lc.deleteCourse(lecturerSelection);
                 break;
             case 4:
-                lc.viewAssignedStudents();
+                lc.getAssignedStudents();
                 break;
             default:
                 System.out.println("Exiting . . . press any button to continue");

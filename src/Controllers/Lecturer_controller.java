@@ -1,47 +1,40 @@
 package Controllers;
 
 import Model.Lecturer;
+import Views.Lecturer_view;
 import Model.Course;
 
 public class Lecturer_controller {
     Lecturer model;
+    Lecturer_view view;
 
-    public Lecturer_controller(Lecturer model) {
+    public Lecturer_controller(Lecturer model, Lecturer_view view) {
         this.model = model;
+        this.view = view;
     }
 
     public void enrollCourse(Course course) {
-        System.out.println("Adding course : ");
-        course.printCourseInfo();
-        model.assignedCourses.add(course);
+        if (model.assignedCourses.contains(course)) {
+            view.displayAlreadyEnrolled();
+            return;
+        } else {
+            view.displayEnrollMessage();
+            course.printCourseInfo();
+            model.assignedCourses.add(course);
+        }
     }
 
     public void deleteCourse(int index) {
-        System.out.println("Deleting course : ");
+        view.displayUnenrollMessage();
         model.assignedCourses.get(index).printCourseInfo();
         model.assignedCourses.remove(index);
     }
 
-    public void displayAssignedCourses() {
-        if (model.assignedCourses.isEmpty()) {
-            System.out.println("You have not enrolled in any course.");
-        } else
-
-        {
-            System.out.println("Assigned Courses for " + model.getName() + " (" +
-                    model.getStaffid() + ")");
-            int i = 1;
-            for (Course tempCourse : model.assignedCourses) {
-                System.out.print("(" + i + ") ");
-                tempCourse.printCourseInfo();
-                i++;
-            }
-        }
+    public void getAssignedCourses() {
+        view.displayAssignedCourses(model.assignedCourses, model.getName(), model.getStaffid());
     }
 
-    public void viewAssignedStudents() {
-        for (Course tempCourse : model.assignedCourses) {
-            tempCourse.PrintAllStudents();
-        }
+    public void getAssignedStudents() {
+        view.viewAssignedStudents(model.assignedCourses);
     }
 }
