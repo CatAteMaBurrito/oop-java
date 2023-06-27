@@ -94,7 +94,8 @@ public class Course {
     }
 
     public void printCourseInfo() {
-        System.out.printf("%-10s %-10s %-20s %-10s %-10s", code, section, name, faculty, credithours);
+        System.out.printf("%-10s %-10s %-20s %-10s", code, section, name, faculty);
+        System.out.println("");
     }
 
 }

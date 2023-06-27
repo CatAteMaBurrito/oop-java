@@ -15,7 +15,7 @@ public class Student_controller {
         return this.model;
     }
 
-    public void registeredCourse(Course course) {
+    public void registerCourse(Course course) {
         if (course.addStudent(this.model, false)) {
             model.getRegisteredCourses().add(course);
         } else {

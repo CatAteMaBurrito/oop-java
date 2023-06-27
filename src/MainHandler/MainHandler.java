@@ -67,7 +67,7 @@ public class MainHandler {
         allCourses.add(new Course("Object Oriented Programming", "SECJ2154", 3, Faculty.COMPUTING, 4));
         allCourses.add(new Course("Object Oriented Programming", "SECJ2154", 4, Faculty.COMPUTING, 4));
         allCourses.add(new Course("Object Oriented Programming", "SECJ2154", 5, Faculty.COMPUTING, 4));
-        allCourses.add(new Course("Object Oriented Programming", "SECJ2154", 1, Faculty.COMPUTING, 4));
+        allCourses.add(new Course("Object Oriented Programming", "SECJ2154", 6, Faculty.COMPUTING, 4));
         allCourses.add(new Course("Web Programming", "SECV2154", 1, Faculty.COMPUTING, 3));
         allCourses.add(new Course("Web Programming", "SECV2154", 2, Faculty.COMPUTING, 3));
         allCourses.add(new Course("Web Programming", "SECV2154", 3, Faculty.COMPUTING, 3));
@@ -164,29 +164,53 @@ public class MainHandler {
 
         switch (input.nextInt()) {
             case 1:
-                Request newrequest = student_controller.requestCourseDrop(allCourses.get(0));
-                // allAO.get(0).addNewRequest(newrequest);
-                student.setRequesthistory(newrequest);
-                break;
+            System.out.println("Select course to drop");
+            System.out.printf(" %-10s %-4s \n", "COURSE", "SECTION");
+
+            for(int i =0; i < student.getRegisteredCourses().size(); i++){
+                System.out.println("["+(i+1)+"] "+student.getRegisteredCourses().get(i).getName() + " " + student.getRegisteredCourses().get(i).getSection());
+            }
+            int choice = input.nextInt() - 1;
+            Request drop = student_controller.requestCourseDrop(student.getRegisteredCourses().get(choice));
+            AcademicOfficer_controller officer = new AcademicOfficer_controller(allAO.get(0),new AcademicOfficer_view());
+            officer.addRequest(drop);
+            System.out.println(student.getRegisteredCourses().get(choice).getName() + " has been requested to be dropped");
+            break;
+
             case 2:
-                System.out.printf(" %-10s %-4s \n", "CODE", "SECTION");
-                for (Course x : allCourses) {
-                    if (x.checkStudent(student)) {
-                        x.printCourseInfo();
-                    }
+                System.out.printf(" %-10s %-4s \n", "CODE", "SECTION", "COURSE", "FACULTY");
+                for (Course x: student.getRegisteredCourses()) {
+                    System.out.println(x.getName() + " " + x.getSection());
                 }
                 break;
+
             case 3:
                 System.out.println("Request History");
                 System.out.println("--------------------------");
-                System.out.println(student.getRequestHistory());
+                for (int i = 0; i < student.getRequestHistory().size(); i++) {
+                    student.getRequestHistory().get(i).printRequestInfo();
+                }
+                // System.out.println(student.getRequestHistory().get(i).printCourseInfo());
 
                 break;
             case 4:
                 if (admendment == false) {
+                    System.out.println("Select course to register");
+                    System.out.printf(" %-10s %-4s \n", "COURSE", "SECTION");
+
+
+                    for (int i = 0; i < allCourses.size(); i++) {
+                        System.out.println("[" + (i+1) + "] " + allCourses.get(i).getName() + " " + allCourses.get(i).getSection());
+                    }
+
+                    int toRegister = input.nextInt() - 1;
+                    student_controller.registerCourse(allCourses.get(toRegister));
+                    System.out.println(allCourses.get(toRegister).getName() + " " + allCourses.get(toRegister).getSection() + " registered successfully");
 
                 } else {
+
                     System.out.println("Registration week is over");
+
                 }
             default:
                 System.out.println("Exiting . . . press any button to continue");
@@ -208,7 +232,7 @@ public class MainHandler {
         System.out.println("-----------------------");
         switch (Integer.parseInt(input.nextLine())) {
             case 1:
-                lc.displayAssignedCourses();
+                // lc.displayAssignedCourses();
                 break;
             case 2:
                 int i = 1;
@@ -223,12 +247,12 @@ public class MainHandler {
                 break;
             case 3:
                 System.out.print("\nPlease enter the index of the course you would like to unenroll => ");
-                lc.displayAssignedCourses();
+                // lc.displayAssignedCourses();
                 int lecturerSelection = Integer.parseInt(input.nextLine()) - 1;
                 lc.deleteCourse(lecturerSelection);
                 break;
             case 4:
-                lc.viewAssignedStudents();
+                // lc.viewAssignedStudents();
                 break;
             default:
                 System.out.println("Exiting . . . press any button to continue");
