@@ -32,24 +32,6 @@ public class Lecturer extends Person {
         assignedCourses.remove(index);
     }
 
-    public void displayAssignedCourses() {
-        if (assignedCourses.isEmpty()) {
-            System.out.println("You have not enrolled in any course.");
-        } else {
-            System.out.println("Assigned Courses for " + super.getName() + " (" + getStaffid() + ")");
-            int i = 1;
-            for (Course tempCourse : assignedCourses) {
-                System.out.print("(" + i + ") ");
-                // tempCourse.printCourseInfo();
-                i++;
-            }
-        }
-    }
 
-    public void viewAssignedStudents() {
-        for (Course tempCourse : assignedCourses) {
-            // tempCourse.listAllStudents();
-        }
-    }
 
 }
