@@ -203,7 +203,7 @@ public class HandleMain {
                 int i = 1;
                 for (Course tempCourse : allCourses) {
                     System.out.print("(" + i + ") ");
-                    // tempCourse.printCourseInfo();
+                    tempCourse.printCourseInfo();
                     i++;
                 }
                 System.out.print("\nPlease enter the index of the course you would like to enroll for => ");

@@ -12,13 +12,13 @@ public class Lecturer_controller {
 
     public void enrollCourse(Course course) {
         System.out.println("Adding course : ");
-        // course.printCourseInfo();
+        course.printCourseInfo();
         model.assignedCourses.add(course);
     }
 
     public void deleteCourse(int index) {
         System.out.println("Deleting course : ");
-        // model.assignedCourses.get(index).printCourseInfo();
+        model.assignedCourses.get(index).printCourseInfo();
         model.assignedCourses.remove(index);
     }
 
@@ -33,7 +33,7 @@ public class Lecturer_controller {
             int i = 1;
             for (Course tempCourse : model.assignedCourses) {
                 System.out.print("(" + i + ") ");
-                // tempCourse.printCourseInfo();
+                tempCourse.printCourseInfo();
                 i++;
             }
         }
@@ -44,5 +44,4 @@ public class Lecturer_controller {
             tempCourse.PrintAllStudents();
         }
     }
-
 }

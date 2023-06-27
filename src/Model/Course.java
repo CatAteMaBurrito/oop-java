@@ -88,12 +88,6 @@ public class Course {
     }
 
     public void PrintAllStudents() {
-        for (Student student : listofStudents) {
-            System.out.printf("%-35s %-20s %-9s ", student.getName(), student.getFaculty(), student.getMatricNo());
-        }
-    }
-
-    public void listAllStudents() {
         System.out.println("List of assigned students for the course : ");
         System.out.println("\nStudent List");
         if (listofStudents.isEmpty()) {
@@ -104,5 +98,9 @@ public class Course {
                         tempStudent.getMatricNo());
             }
         }
+    }
+
+    public void printCourseInfo() {
+        System.out.printf(" %-10s %-4s \n", code, section);
     }
 }
