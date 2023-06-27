@@ -7,8 +7,9 @@ public class Lecturer extends Person {
 
     private ArrayList<Course> assignedCourses = new ArrayList<Course>();
 
-    public Lecturer(String name, String staffid) {
-        super(name);
+    
+    public Lecturer(String name, Faculty faculty, String staffid) {
+        super(name, faculty);
         this.staffid = staffid;
     }
 
@@ -18,13 +19,16 @@ public class Lecturer extends Person {
 
     public void enrollCourse(Course course) {
         System.out.println("Adding course : ");
-        course.printCourseInfo();
-        assignedCourses.add(course);
+        if(assignedCourses.add(course)){
+            course.addLecturer(this);
+        }else{
+            // print error
+        }
     }
 
     public void deleteCourse(int index) {
         System.out.println("Deleting course : ");
-        assignedCourses.get(index).printCourseInfo();
+        assignedCourses.get(index).removelecturer();
         assignedCourses.remove(index);
     }
 
