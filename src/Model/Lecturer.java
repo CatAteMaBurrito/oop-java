@@ -40,7 +40,7 @@ public class Lecturer extends Person {
             int i = 1;
             for (Course tempCourse : assignedCourses) {
                 System.out.print("(" + i + ") ");
-                tempCourse.printCourseInfo();
+                // tempCourse.printCourseInfo();
                 i++;
             }
         }
@@ -48,7 +48,7 @@ public class Lecturer extends Person {
 
     public void viewAssignedStudents() {
         for (Course tempCourse : assignedCourses) {
-            tempCourse.listAllStudents();
+            // tempCourse.listAllStudents();
         }
     }
 
