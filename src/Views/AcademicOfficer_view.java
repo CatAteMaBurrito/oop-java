@@ -35,7 +35,7 @@ public class AcademicOfficer_view {
         System.out.printf("%-9s", "staffID");
         System.out.println();
         for (Lecturer x : lecturerslist) {
-            System.out.printf("%-35s", x.getName().substring(0, 34));
+            System.out.printf("%-35s", x.getName());
             System.out.printf("%-9s", x.getStaffid());
             System.out.println();
         }
@@ -47,7 +47,7 @@ public class AcademicOfficer_view {
         System.out.printf("%-9s", "MatricNO");
         System.out.println();
         for (Student x : studentslist) {
-            System.out.printf("%-35s", x.getName().substring(0, 34));
+            System.out.printf("%-35s", x.getName());
             System.out.printf("%-9s", x.getMatricNo());
             System.out.println();
         }
