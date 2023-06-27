@@ -33,7 +33,10 @@ public class AcademicOfficer_controller {
     // Change Student Section
     public void changeStudentSection(Course oldCourse, Course newCourse, Student student) {
         newCourse.addStudent(student, true);
+        Student_controller stucon = new Student_controller(student);
+        stucon.registerCourse(newCourse);
         oldCourse.removeStudent(student);
+        student.removeCourse(oldCourse);
     }
 
     // Drop Lecturer From Course
