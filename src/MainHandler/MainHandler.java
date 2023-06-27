@@ -68,7 +68,7 @@ public class MainHandler {
         allCourses.add(new Course("Object Oriented Programming", "SECJ2154", 3, Faculty.COMPUTING, 4));
         allCourses.add(new Course("Object Oriented Programming", "SECJ2154", 4, Faculty.COMPUTING, 4));
         allCourses.add(new Course("Object Oriented Programming", "SECJ2154", 5, Faculty.COMPUTING, 4));
-        allCourses.add(new Course("Object Oriented Programming", "SECJ2154", 1, Faculty.COMPUTING, 4));
+        allCourses.add(new Course("Object Oriented Programming", "SECJ2154", 6, Faculty.COMPUTING, 4));
         allCourses.add(new Course("Web Programming", "SECV2154", 1, Faculty.COMPUTING, 3));
         allCourses.add(new Course("Web Programming", "SECV2154", 2, Faculty.COMPUTING, 3));
         allCourses.add(new Course("Web Programming", "SECV2154", 3, Faculty.COMPUTING, 3));
@@ -177,17 +177,23 @@ public class MainHandler {
                     }
                 }
                 break;
+
             case 3:
                 System.out.println("Request History");
                 System.out.println("--------------------------");
-                System.out.println(student.getRequestHistory());
+                for (int i = 0; i < student.getRequestHistory().size(); i++) {
+                    student.getRequestHistory().get(i).printRequestInfo();
+                }
+                // System.out.println(student.getRequestHistory().get(i).printCourseInfo());
 
                 break;
             case 4:
                 if (admendment == false) {
 
                 } else {
+
                     System.out.println("Registration week is over");
+
                 }
             default:
                 System.out.println("Exiting . . . press any button to continue");

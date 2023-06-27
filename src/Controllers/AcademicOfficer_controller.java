@@ -16,13 +16,14 @@ public class AcademicOfficer_controller {
         this.view = view;
     }
 
-    public void addNewRequest(Request request){
+    public void addNewRequest(Request request) {
         model.getListofRequests().add(request);
     }
+
     // Drop Student From Course
     public void dropStudent(Course course, Student student) {
         if (course.removeStudent(student)) {
-
+            student.removeCourse(course);
         } else {
             System.out.println(course.getCode() + " Section " + course.getSection() + " is Empty");
         }
@@ -97,8 +98,8 @@ public class AcademicOfficer_controller {
 
 // Fixes for student controller
 /*
- *         Request newrequest = new Request(this.model, course);
-        model.setRequesthistory(newrequest);
-        return newrequest;
+ * Request newrequest = new Request(this.model, course);
+ * model.setRequesthistory(newrequest);
+ * return newrequest;
  * 
  */

@@ -28,4 +28,8 @@ public class Student extends Person {
         return this.requesthistory;
     }
 
+    public void removeCourse(Course course) {
+        registeredCourses.remove(course);
+    }
+
 }
