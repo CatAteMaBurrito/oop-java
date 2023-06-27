@@ -1,17 +1,18 @@
-package Interface;
+package MainHandler;
 
 import java.util.*;
 
 import Controllers.AcademicOfficer_controller;
+import Controllers.Lecturer_controller;
 import Model.*;
 import Views.AcademicOfficer_view;
 
-public class Interface {
+public class HandleMain {
     public static Vector<Course> allCourses = new Vector<Course>(0);
     public static Vector<AcademicOfficer> allAO = new Vector<AcademicOfficer>(0);
     public static Vector<Student> allStu = new Vector<Student>(0);
     public static Vector<Lecturer> allProfs = new Vector<Lecturer>(0);
-  
+
     public static void Declare_All_Variables() {
         allStu.add(new Student("Muhammad Hafiz", Faculty.ELECTRICAL, "A21EC4060"));
         allStu.add(new Student("Lee Mei Ling", Faculty.CIVIL, "A21EC4061"));
@@ -77,7 +78,7 @@ public class Interface {
         allCourses.get(0).addStudent(allStu.get(4), false);
         allCourses.get(0).addStudent(allStu.get(5), false);
     }
-  
+
     public static void menu() {
         System.out.println("----------------------");
         System.out.println(" [1] Academic Officer ");
@@ -184,7 +185,9 @@ public class Interface {
         return true;
     }
 
-    public static boolean Lecturer(Lecturer lecturer, Scanner input) {
+    public static boolean LecturerIF(Lecturer lecturer, Scanner input) {
+        Lecturer_controller lc = new Lecturer_controller(lecturer);
+
         System.out.println("-----------------------");
         System.out.println("[1] View Assigned Courses");
         System.out.println("[2] Add New Course");
@@ -192,10 +195,9 @@ public class Interface {
         System.out.println("[4] View Assigned Students");
         System.out.println("[0] Exit");
         System.out.println("-----------------------");
-
         switch (Integer.parseInt(input.nextLine())) {
             case 1:
-                lecturer.displayAssignedCourses();
+                lc.displayAssignedCourses();
                 break;
             case 2:
                 int i = 1;
@@ -206,16 +208,16 @@ public class Interface {
                 }
                 System.out.print("\nPlease enter the index of the course you would like to enroll for => ");
                 int enrollSelection = Integer.parseInt(input.nextLine()) - 1;
-                lecturer.enrollCourse(allCourses.get(enrollSelection));
+                lc.enrollCourse(allCourses.get(enrollSelection));
                 break;
             case 3:
                 System.out.print("\nPlease enter the index of the course you would like to unenroll => ");
-                lecturer.displayAssignedCourses();
+                lc.displayAssignedCourses();
                 int lecturerSelection = Integer.parseInt(input.nextLine()) - 1;
-                lecturer.deleteCourse(lecturerSelection);
+                lc.deleteCourse(lecturerSelection);
                 break;
             case 4:
-                lecturer.viewAssignedStudents();
+                lc.viewAssignedStudents();
                 break;
             default:
                 System.out.println("Exiting . . . press any button to continue");
@@ -225,5 +227,4 @@ public class Interface {
 
         return true;
     }
-
 }

@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 public class Lecturer extends Person {
     private String staffid;
-
-    private ArrayList<Course> assignedCourses = new ArrayList<Course>();
+    public ArrayList<Course> assignedCourses = new ArrayList<Course>();
 
     public Lecturer(String name, Faculty faculty, String staffid) {
         super(name, faculty);
@@ -15,22 +14,5 @@ public class Lecturer extends Person {
     public String getStaffid() {
         return staffid;
     }
-
-    public void enrollCourse(Course course) {
-        System.out.println("Adding course : ");
-        if (assignedCourses.add(course)) {
-            course.addLecturer(this);
-        } else {
-            // print error
-        }
-    }
-
-    public void deleteCourse(int index) {
-        System.out.println("Deleting course : ");
-        assignedCourses.get(index).removelecturer();
-        assignedCourses.remove(index);
-    }
-
-
 
 }
