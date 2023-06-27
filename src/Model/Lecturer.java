@@ -7,7 +7,6 @@ public class Lecturer extends Person {
 
     private ArrayList<Course> assignedCourses = new ArrayList<Course>();
 
-    
     public Lecturer(String name, Faculty faculty, String staffid) {
         super(name, faculty);
         this.staffid = staffid;
@@ -19,9 +18,9 @@ public class Lecturer extends Person {
 
     public void enrollCourse(Course course) {
         System.out.println("Adding course : ");
-        if(assignedCourses.add(course)){
+        if (assignedCourses.add(course)) {
             course.addLecturer(this);
-        }else{
+        } else {
             // print error
         }
     }
