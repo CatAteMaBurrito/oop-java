@@ -11,7 +11,7 @@ public class Interface {
     public static Vector<AcademicOfficer> allAO = new Vector<AcademicOfficer>(0);
     public static Vector<Student> allStu = new Vector<Student>(0);
     public static Vector<Lecturer> allProfs = new Vector<Lecturer>(0);
-
+  
     public static void Declare_All_Variables() {
         allStu.add(new Student("Muhammad Hafiz", Faculty.ELECTRICAL, "A21EC4060"));
         allStu.add(new Student("Lee Mei Ling", Faculty.CIVIL, "A21EC4061"));
@@ -77,7 +77,7 @@ public class Interface {
         allCourses.get(0).addStudent(allStu.get(4), false);
         allCourses.get(0).addStudent(allStu.get(5), false);
     }
-
+  
     public static void menu() {
         System.out.println("----------------------");
         System.out.println(" [1] Academic Officer ");

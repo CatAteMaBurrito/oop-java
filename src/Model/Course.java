@@ -77,4 +77,9 @@ public class Course {
         this.credithours = credithours;
     }
 
+    public void PrintAllStudents(){
+        for(Student student: listofStudents){
+            System.out.printf("%-35s %-20s %-9s ", student.getName(), student.getFaculty(), student.getMatricNo());
+        }
+    }
 }
