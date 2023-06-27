@@ -66,12 +66,22 @@ public class Request {
     }
 
     public void printRequestInfo() {
-        if (this.sturef == null) {
-            System.out.printf(" %-9s %-10s %-4s %-4s %-15s \n", this.sturef.getMatricNo(), this.course1.getCode(),
-                    this.course1.getSection(), this.course2.getSection(), this.getTypeValue());
+        if (this.lecref == null) {
+            if (this.course2 == null) {
+                System.out.printf(" %-9s %-10s %-4s %-15s \n", this.sturef.getMatricNo(), this.course1.getCode(),
+                        this.course1.getSection(), this.getTypeValue());
+            } else {
+                System.out.printf(" %-9s %-10s %-4s %-4s %-15s \n", this.sturef.getMatricNo(), this.course1.getCode(),
+                        this.course1.getSection(), this.course2.getSection(), this.getTypeValue());
+            }
         } else {
-            System.out.printf(" %-9s %-10s %-4s %-4s %-15s \n", this.lecref.getStaffid(), this.course1.getCode(),
-                    this.course1.getSection(), this.course2.getSection(), this.getTypeValue());
+            if (this.course2 == null) {
+                System.out.printf(" %-9s %-10s %-4s %-15s \n", this.lecref.getStaffid(), this.course1.getCode(),
+                        this.course1.getSection(), this.getTypeValue());
+            } else {
+                System.out.printf(" %-9s %-10s %-4s %-4s %-15s \n", this.lecref.getStaffid(), this.course1.getCode(),
+                        this.course1.getSection(), this.course2.getSection(), this.getTypeValue());
+            }
         }
 
     }
