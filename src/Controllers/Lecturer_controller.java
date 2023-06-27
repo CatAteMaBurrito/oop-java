@@ -1,10 +1,12 @@
 package Controllers;
 
 import Model.Lecturer;
+import Views.Lecturer_view;
 import Model.Course;
 
 public class Lecturer_controller {
     Lecturer model;
+    Lecturer_view view;
 
     public Lecturer_controller(Lecturer model) {
         this.model = model;
@@ -13,36 +15,21 @@ public class Lecturer_controller {
     public void enrollCourse(Course course) {
         System.out.println("Adding course : ");
         // course.printCourseInfo();
-        model.assignedCourses.add(course);
+        model.getAssignedCourses().add(course);
     }
 
     public void deleteCourse(int index) {
         System.out.println("Deleting course : ");
-        // model.assignedCourses.get(index).printCourseInfo();
-        model.assignedCourses.remove(index);
+        // model.getAssignedCourses().get(index).printCourseInfo();
+        model.getAssignedCourses().remove(index);
     }
 
-    public void displayAssignedCourses() {
-        if (model.assignedCourses.isEmpty()) {
-            System.out.println("You have not enrolled in any course.");
-        } else
-
-        {
-            System.out.println("Assigned Courses for " + model.getName() + " (" +
-                    model.getStaffid() + ")");
-            int i = 1;
-            for (Course tempCourse : model.assignedCourses) {
-                System.out.print("(" + i + ") ");
-                // tempCourse.printCourseInfo();
-                i++;
-            }
-        }
+    public void printstuents(){
+        view.viewAssignedStudents(model.getAssignedCourses());
     }
 
-    public void viewAssignedStudents() {
-        for (Course tempCourse : model.assignedCourses) {
-            // tempCourse.listAllStudents();
-        }
+    public void printCourses(){
+        view.displayAssignedCourses(model.getAssignedCourses(), model);
     }
 
 }
