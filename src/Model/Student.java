@@ -1,9 +1,4 @@
-<<<<<<< HEAD:src/Model/Student.java
 package Model;
-=======
-package Entities;
-
->>>>>>> 5da6cb031a76b633384c57d3bd9e8b55aaf93331:src/Entities/Student.java
 import java.util.Vector;;
 
 public class Student extends Person {
