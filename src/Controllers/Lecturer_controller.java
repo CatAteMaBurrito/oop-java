@@ -41,7 +41,7 @@ public class Lecturer_controller {
 
     public void viewAssignedStudents() {
         for (Course tempCourse : model.assignedCourses) {
-            // tempCourse.listAllStudents();
+            tempCourse.PrintAllStudents();
         }
     }
 
