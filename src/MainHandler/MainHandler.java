@@ -173,7 +173,7 @@ public class MainHandler {
             int choice = input.nextInt() - 1;
             Request drop = student_controller.requestCourseDrop(student.getRegisteredCourses().get(choice));
             AcademicOfficer_controller officer = new AcademicOfficer_controller(allAO.get(0),new AcademicOfficer_view());
-            officer.addRequest(drop);
+            officer.addNewRequest(drop);
             System.out.println(student.getRegisteredCourses().get(choice).getName() + " has been requested to be dropped");
             break;
 

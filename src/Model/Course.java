@@ -36,6 +36,7 @@ public class Course {
             return false;
         } else {
             listofStudents.removeElement(student);
+            // student.getRegisteredCourses().get(student.getRegisteredCourses().indexOf(this)).removeStudent(student);
             return true;
         }
 

@@ -33,12 +33,17 @@ public class Student_controller {
     }
 
     public Request requestSectionChange(Course oldCourse, Course newCourse) {
-        return new Request(this.model, oldCourse, newCourse);
+        Request newrequest = new Request(this.model, oldCourse, newCourse);
+        model.setRequesthistory(newrequest);
+        return newrequest;
     }
 
     // this is requesting the academic officer to drop a course during ammendment.
     public Request requestCourseDrop(Course course) {
-        return new Request(this.model, course);
+        // return new Request(this.model, course);
+        Request newrequest = new Request(this.model, course);
+        model.setRequesthistory(newrequest);
+        return newrequest;
     }
 
 }
