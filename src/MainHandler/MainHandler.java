@@ -129,9 +129,9 @@ public class MainHandler {
                 System.out.println("[2] Turn OFF");
                 int choice = Integer.parseInt(input.nextLine());
                 if (choice == 1) {
-                    admendment = true;
-                } else {
                     admendment = false;
+                } else {
+                    admendment = true;
                 }
                 break;
             case 5:
