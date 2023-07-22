@@ -1,4 +1,4 @@
-package MainHandler;
+package mainhandler;
 
 import java.util.*;
 
@@ -167,24 +167,27 @@ public class MainHandler {
             case 1:
                 System.out.println("Select course to drop");
                 System.out.printf(" %-10s %-4s \n", "COURSE", "SECTION");
-
-                for (int i = 0; i < student.getRegisteredCourses().size(); i++) {
-                    System.out.println("[" + (i + 1) + "] " + student.getRegisteredCourses().get(i).getName() + " "
-                            + student.getRegisteredCourses().get(i).getSection());
+                if (student.getRegisteredCourses().isEmpty()) {
+                    System.out.println("No Subjects Registered");
+                    break;
+                } else {
+                    for (int i = 0; i < student.getRegisteredCourses().size(); i++) {
+                        System.out.println("[" + (i + 1) + "] " + student.getRegisteredCourses().get(i).getName() + " "
+                                + student.getRegisteredCourses().get(i).getSection());
+                    }
+                    int choice = input.nextInt() - 1;
+                    Request drop = student_controller.requestCourseDrop(student.getRegisteredCourses().get(choice));
+                    AcademicOfficer_controller officer = new AcademicOfficer_controller(allAO.get(0),
+                            new AcademicOfficer_view());
+                    officer.addNewRequest(drop);
+                    System.out.println(
+                            student.getRegisteredCourses().get(choice).getName() + " has been requested to be dropped");
                 }
-                int choice = input.nextInt() - 1;
-                Request drop = student_controller.requestCourseDrop(student.getRegisteredCourses().get(choice));
-                AcademicOfficer_controller officer = new AcademicOfficer_controller(allAO.get(0),
-                        new AcademicOfficer_view());
-                officer.addNewRequest(drop);
-                System.out.println(
-                        student.getRegisteredCourses().get(choice).getName() + " has been requested to be dropped");
                 break;
-
             case 2:
                 System.out.printf(" %-10s %-4s \n", "CODE", "SECTION", "COURSE", "FACULTY");
                 for (Course x : student.getRegisteredCourses()) {
-                    System.out.println(x.getName() + " " + x.getSection());
+                    System.out.println(x.getCode() + " " + x.getSection());
                 }
                 break;
 
@@ -217,6 +220,7 @@ public class MainHandler {
                     System.out.println("Registration week is over");
 
                 }
+                break;
             default:
                 System.out.println("Exiting . . . press any button to continue");
                 input.nextLine();
