@@ -220,6 +220,7 @@ public class MainHandler {
                     System.out.println("Registration week is over");
 
                 }
+                break;
             default:
                 System.out.println("Exiting . . . press any button to continue");
                 input.nextLine();
