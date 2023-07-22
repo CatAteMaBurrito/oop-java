@@ -93,9 +93,9 @@ public class MainHandler {
         System.out.println(banner2);
 
         System.out.println("----------------------");
-        System.out.println(" [1] Academic Officer ");
-        System.out.println(" [2] Lecturer ");
-        System.out.println(" [3] Student ");
+        System.out.println(" [1] Student ");
+        System.out.println(" [2] Academic Officer ");
+        System.out.println(" [3] Lecturer ");
         System.out.println(" [0] Exit");
         System.out.println("----------------------");
 

@@ -13,13 +13,13 @@ public class Main {
             choice = input.nextInt();
             input.nextLine();
             if (choice == 1) {
-                while (MainHandler.AOIF(MainHandler.allAO.get(0), input))
+                while (MainHandler.StuIF(MainHandler.allStu.get(0), input))
                     ;
             } else if (choice == 2) {
-                while (MainHandler.LecturerIF(MainHandler.allProfs.get(0), input))
+                while (MainHandler.AOIF(MainHandler.allAO.get(0), input))
                     ;
             } else if (choice == 3) {
-                while (MainHandler.StuIF(MainHandler.allStu.get(0), input))
+                while (MainHandler.LecturerIF(MainHandler.allProfs.get(0), input))
                     ;
             } else {
                 System.out.println("Exiting . . .");
