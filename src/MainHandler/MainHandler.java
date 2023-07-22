@@ -7,6 +7,7 @@ import Controllers.Lecturer_controller;
 import Controllers.Student_controller;
 import Model.*;
 import Views.AcademicOfficer_view;
+import Views.Lecturer_view;
 import Views.Student_view;
 
 public class MainHandler {
@@ -104,7 +105,7 @@ public class MainHandler {
      */
 
     public static boolean AOIF(AcademicOfficer AOF, Scanner input) {
-        AcademicOfficer_controller officer = new AcademicOfficer_controller(AOF, new AcademicOfficer_view());
+        AcademicOfficer_controller officer = new AcademicOfficer_controller(AOF, new AcademicOfficer_view()); // aggregation
         System.out.println("-----------------------");
         System.out.println("[1] View All Courses");
         System.out.println("[2] View All Students");
@@ -128,9 +129,9 @@ public class MainHandler {
                 System.out.println("[2] Turn OFF");
                 int choice = Integer.parseInt(input.nextLine());
                 if (choice == 1) {
-                    admendment = true;
-                } else {
                     admendment = false;
+                } else {
+                    admendment = true;
                 }
                 break;
             case 5:
@@ -228,7 +229,8 @@ public class MainHandler {
     }
 
     public static boolean LecturerIF(Lecturer lecturer, Scanner input) {
-        Lecturer_controller lc = new Lecturer_controller(lecturer);
+        Lecturer_view view = new Lecturer_view();
+        Lecturer_controller lc = new Lecturer_controller(lecturer, view);
 
         System.out.println("-----------------------");
         System.out.println("[1] View Assigned Courses");
@@ -239,13 +241,13 @@ public class MainHandler {
         System.out.println("-----------------------");
         switch (Integer.parseInt(input.nextLine())) {
             case 1:
-                // lc.displayAssignedCourses();
+                lc.getAssignedCourses();
                 break;
             case 2:
                 int i = 1;
                 for (Course tempCourse : allCourses) {
                     System.out.print("(" + i + ") ");
-                    // tempCourse.printCourseInfo();
+                    tempCourse.printCourseInfo();
                     i++;
                 }
                 System.out.print("\nPlease enter the index of the course you would like to enroll for => ");
@@ -253,13 +255,13 @@ public class MainHandler {
                 lc.enrollCourse(allCourses.get(enrollSelection));
                 break;
             case 3:
+                lc.getAssignedCourses();
                 System.out.print("\nPlease enter the index of the course you would like to unenroll => ");
-                // lc.displayAssignedCourses();
                 int lecturerSelection = Integer.parseInt(input.nextLine()) - 1;
                 lc.deleteCourse(lecturerSelection);
                 break;
             case 4:
-                // lc.viewAssignedStudents();
+                lc.getAssignedStudents();
                 break;
             default:
                 System.out.println("Exiting . . . press any button to continue");

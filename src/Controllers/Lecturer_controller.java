@@ -8,28 +8,33 @@ public class Lecturer_controller {
     Lecturer model;
     Lecturer_view view;
 
-    public Lecturer_controller(Lecturer model) {
+    public Lecturer_controller(Lecturer model, Lecturer_view view) {
         this.model = model;
+        this.view = view;
     }
 
     public void enrollCourse(Course course) {
-        System.out.println("Adding course : ");
-        // course.printCourseInfo();
-        model.getAssignedCourses().add(course);
+        if (model.assignedCourses.contains(course)) {
+            view.displayAlreadyEnrolled();
+            return;
+        } else {
+            view.displayEnrollMessage();
+            course.printCourseInfo();
+            model.assignedCourses.add(course);
+        }
     }
 
     public void deleteCourse(int index) {
-        System.out.println("Deleting course : ");
-        // model.getAssignedCourses().get(index).printCourseInfo();
-        model.getAssignedCourses().remove(index);
+        view.displayUnenrollMessage();
+        model.assignedCourses.get(index).printCourseInfo();
+        model.assignedCourses.remove(index);
     }
 
-    public void printstuents(){
-        view.viewAssignedStudents(model.getAssignedCourses());
+    public void getAssignedCourses() {
+        view.displayAssignedCourses(model.assignedCourses, model.getName(), model.getStaffid());
     }
 
-    public void printCourses(){
-        view.displayAssignedCourses(model.getAssignedCourses(), model);
+    public void getAssignedStudents() {
+        view.viewAssignedStudents(model.assignedCourses);
     }
-
 }

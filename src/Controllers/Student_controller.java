@@ -4,8 +4,14 @@ import Model.Student;
 import Model.Course;
 import Model.Request;
 
-public class Student_controller {
-    private Student model;
+interface Registrable {
+    void registerCourse(Course course);
+
+    void dropCourse(Course course);
+}
+
+public class Student_controller implements Registrable {
+    private Student model; // association
 
     public Student_controller(Student model) {
         this.model = model;
@@ -15,6 +21,7 @@ public class Student_controller {
         return this.model;
     }
 
+    @Override
     public void registerCourse(Course course) {
         if (course.addStudent(this.model, false)) {
             model.getRegisteredCourses().add(course);
@@ -23,7 +30,7 @@ public class Student_controller {
         }
     }
 
-    // this is during registration (incase you want to remove registered course).
+    @Override
     public void dropCourse(Course course) {
         if (course.removeStudent(this.model)) {
             model.getRegisteredCourses().remove(course);
@@ -38,12 +45,9 @@ public class Student_controller {
         return newrequest;
     }
 
-    // this is requesting the academic officer to drop a course during ammendment.
     public Request requestCourseDrop(Course course) {
-        // return new Request(this.model, course);
         Request newrequest = new Request(this.model, course);
         model.setRequesthistory(newrequest);
         return newrequest;
     }
-
 }

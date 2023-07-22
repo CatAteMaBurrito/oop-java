@@ -89,14 +89,19 @@ public class Course {
     }
 
     public void PrintAllStudents() {
-        for (Student student : listofStudents) {
-            System.out.printf("%-35s %-20s %-9s ", student.getName(), student.getFaculty(), student.getMatricNo());
+        System.out.println("Student List");
+        if (listofStudents.isEmpty()) {
+            System.out.println("No students have enrolled for the course yet.\n");
+        } else {
+            for (Student tempStudent : listofStudents) {
+                System.out.printf("%-35s %-20s %-9s\n", tempStudent.getName(), tempStudent.getFaculty(),
+                        tempStudent.getMatricNo());
+            }
+            System.out.print("\n");
         }
     }
 
     public void printCourseInfo() {
-        System.out.printf("%-10s %-10s %-20s %-10s", code, section, name, faculty);
-        System.out.println("");
+        System.out.printf("%-10s %-2s %-25s\n", code, section, name);
     }
-
 }
