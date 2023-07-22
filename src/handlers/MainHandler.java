@@ -1,4 +1,4 @@
-package mainhandler;
+package handlers;
 
 import java.util.*;
 
@@ -84,6 +84,14 @@ public class MainHandler {
     }
 
     public static void menu() {
+
+        String banner2 = """
+
+                █▀▀ █▀█ █░█ █▀█ █▀ █▀▀   █▀█ █▀▀ █▀▀ █ █▀ ▀█▀ █▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█   █▀ █▄█ █▀ ▀█▀ █▀▀ █▀▄▀█
+                █▄▄ █▄█ █▄█ █▀▄ ▄█ ██▄   █▀▄ ██▄ █▄█ █ ▄█ ░█░ █▀▄ █▀█ ░█░ █ █▄█ █░▀█   ▄█ ░█░ ▄█ ░█░ ██▄ █░▀░█
+                                """;
+        System.out.println(banner2);
+
         System.out.println("----------------------");
         System.out.println(" [1] Academic Officer ");
         System.out.println(" [2] Lecturer ");
