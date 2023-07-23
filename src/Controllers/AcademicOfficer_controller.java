@@ -7,8 +7,12 @@ import Model.Student;
 import Views.AcademicOfficer_view;
 import Model.Request;
 
-public class AcademicOfficer_controller {
-    private AcademicOfficer model;
+interface RequestHandling{
+    void preformRequest(Request request);
+}
+
+public class AcademicOfficer_controller implements RequestHandling {
+    private AcademicOfficer model; // aggragation
     public AcademicOfficer_view view;
 
     public AcademicOfficer_controller(AcademicOfficer model, AcademicOfficer_view view) {
@@ -87,7 +91,7 @@ public class AcademicOfficer_controller {
 
     public void choosenRequest(int choice) {
         try {
-            preformRequest(model.getListofRequests().get(choice));
+            preformRequest(model.getListofRequests().get(choice)); // exception handeling 
             model.getListofRequests().remove(model.getListofRequests().get(choice));
         } catch (Exception e) {
             System.out.println(choice + " is not a valid index ");
