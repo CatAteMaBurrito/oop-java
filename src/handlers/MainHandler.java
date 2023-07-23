@@ -9,6 +9,7 @@ import Model.*;
 import Views.AcademicOfficer_view;
 import Views.Lecturer_view;
 import Views.Student_view;
+import Exceptions.*;
 
 public class MainHandler {
     public static Vector<Course> allCourses = new Vector<Course>(0);
@@ -246,7 +247,7 @@ public class MainHandler {
         System.out.println("[2] Add New Course");
         System.out.println("[3] Delete a Course");
         System.out.println("[4] View Assigned Students");
-        System.out.println("[0] Exit");
+        System.out.println("[0] Back to Main Menu");
         System.out.println("-----------------------");
         switch (Integer.parseInt(input.nextLine())) {
             case 1:
@@ -264,10 +265,17 @@ public class MainHandler {
                 lc.enrollCourse(allCourses.get(enrollSelection));
                 break;
             case 3:
-                lc.getAssignedCourses();
-                System.out.print("\nPlease enter the index of the course you would like to unenroll => ");
-                int lecturerSelection = Integer.parseInt(input.nextLine()) - 1;
-                lc.deleteCourse(lecturerSelection);
+                if (!lc.getAssignedCourses()) {
+                    System.out.print("\nPlease enter the index of the course you would like to unenroll => ");
+                    int lecturerSelection = Integer.parseInt(input.nextLine()) - 1;
+                    try {
+                        lc.deleteCourse(lecturerSelection);
+                    } catch (InvalidCourseException e) {
+                        System.out.println("\nERROR: Please enter a valid index");
+                        e.printStackTrace();
+
+                    }
+                }
                 break;
             case 4:
                 lc.getAssignedStudents();
