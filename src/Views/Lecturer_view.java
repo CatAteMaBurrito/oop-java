@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Model.Course;
 
 public class Lecturer_view {
-    public void displayAssignedCourses(ArrayList<Course> assignedCourses, String name, String id) {
+    public boolean displayAssignedCourses(ArrayList<Course> assignedCourses, String name, String id) {
         if (assignedCourses.isEmpty()) {
             System.out.println("You have not enrolled in any course.");
         } else {
@@ -19,12 +19,17 @@ public class Lecturer_view {
                 i++;
             }
         }
+        return assignedCourses.isEmpty();
     }
 
     public void viewAssignedStudents(ArrayList<Course> assignedCourses) {
-        for (Course tempCourse : assignedCourses) {
-            tempCourse.printCourseInfo();
-            tempCourse.PrintAllStudents();
+        if (assignedCourses.isEmpty()) {
+            System.out.println("You do not have any assigned students as you have not enrolled in any course.");
+        } else {
+            for (Course tempCourse : assignedCourses) {
+                tempCourse.printCourseInfo();
+                tempCourse.PrintAllStudents();
+            }
         }
     }
 

@@ -3,8 +3,19 @@ package Controllers;
 import Model.Lecturer;
 import Views.Lecturer_view;
 import Model.Course;
+import Exceptions.InvalidCourseException;
 
-public class Lecturer_controller {
+interface InterfaceLecturerController {
+    void enrollCourse(Course course);
+
+    void deleteCourse(int index) throws InvalidCourseException;
+
+    boolean getAssignedCourses();
+
+    void getAssignedStudents();
+}
+
+public class Lecturer_controller implements InterfaceLecturerController {
     Lecturer model;
     Lecturer_view view;
 
@@ -13,28 +24,38 @@ public class Lecturer_controller {
         this.view = view;
     }
 
+    @Override
     public void enrollCourse(Course course) {
-        if (model.assignedCourses.contains(course)) {
+        if (model.getAssignedCourses().contains(course)) {
             view.displayAlreadyEnrolled();
             return;
         } else {
             view.displayEnrollMessage();
             course.printCourseInfo();
-            model.assignedCourses.add(course);
+            model.getAssignedCourses().add(course);
         }
     }
 
-    public void deleteCourse(int index) {
-        view.displayUnenrollMessage();
-        model.assignedCourses.get(index).printCourseInfo();
-        model.assignedCourses.remove(index);
+    @Override
+    public void deleteCourse(int index) throws InvalidCourseException {
+        if (index < 0 || index >= model.getAssignedCourses().size()) {
+            throw new InvalidCourseException("Invalid course index provided: " + index);
+        } else {
+            view.displayUnenrollMessage();
+            model.getAssignedCourses().get(index).printCourseInfo();
+            model.getAssignedCourses().remove(index);
+        }
     }
 
-    public void getAssignedCourses() {
-        view.displayAssignedCourses(model.assignedCourses, model.getName(), model.getStaffid());
+    @Override
+    public boolean getAssignedCourses() {
+        boolean lecturerCourseListEmpty = view.displayAssignedCourses(model.getAssignedCourses(), model.getName(),
+                model.getStaffid());
+        return lecturerCourseListEmpty;
     }
 
+    @Override
     public void getAssignedStudents() {
-        view.viewAssignedStudents(model.assignedCourses);
+        view.viewAssignedStudents(model.getAssignedCourses());
     }
 }
