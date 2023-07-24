@@ -10,6 +10,18 @@ interface Registrable {
     void dropCourse(Course course);
 }
 
+class CourseRegistrationException extends RuntimeException {
+    public CourseRegistrationException(String message) {
+        super(message);
+    }
+}
+
+class CourseDropException extends RuntimeException {
+    public CourseDropException(String message) {
+        super(message);
+    }
+}
+
 public class Student_controller implements Registrable {
     private Student model; // association
 
@@ -26,7 +38,8 @@ public class Student_controller implements Registrable {
         if (course.addStudent(this.model, false)) {
             model.getRegisteredCourses().add(course);
         } else {
-            // error
+            throw new CourseRegistrationException(
+                    "Failed to register course. Course might be full or other registration constraints.");
         }
     }
 
@@ -35,7 +48,7 @@ public class Student_controller implements Registrable {
         if (course.removeStudent(this.model)) {
             model.getRegisteredCourses().remove(course);
         } else {
-            // error
+            throw new CourseDropException("Failed to drop course. The student may not be registered for the course.");
         }
     }
 

@@ -161,10 +161,10 @@ public class MainHandler {
 
     public static boolean StuIF(Student student, Scanner input) {
         System.out.println("--------------------------");
-        System.out.println("[1] Make a New Request");
+        System.out.println("[1] register course");
         System.out.println("[2] View Registered Courses");
-        System.out.println("[3] View Request History");
-        System.out.println("[4] register course");
+        System.out.println("[3] Make a New Request");
+        System.out.println("[4] View Request History");
         System.out.println("[0] Exit");
         System.out.println("--------------------------");
 
@@ -173,42 +173,6 @@ public class MainHandler {
 
         switch (input.nextInt()) {
             case 1:
-                System.out.println("Select course to drop");
-                System.out.printf(" %-10s %-4s \n", "COURSE", "SECTION");
-                if (student.getRegisteredCourses().isEmpty()) {
-                    System.out.println("No Subjects Registered");
-                    break;
-                } else {
-                    for (int i = 0; i < student.getRegisteredCourses().size(); i++) {
-                        System.out.println("[" + (i + 1) + "] " + student.getRegisteredCourses().get(i).getName() + " "
-                                + student.getRegisteredCourses().get(i).getSection());
-                    }
-                    int choice = input.nextInt() - 1;
-                    Request drop = student_controller.requestCourseDrop(student.getRegisteredCourses().get(choice));
-                    AcademicOfficer_controller officer = new AcademicOfficer_controller(allAO.get(0),
-                            new AcademicOfficer_view());
-                    officer.addNewRequest(drop);
-                    System.out.println(
-                            student.getRegisteredCourses().get(choice).getName() + " has been requested to be dropped");
-                }
-                break;
-            case 2:
-                System.out.printf(" %-10s %-4s \n", "CODE", "SECTION", "COURSE", "FACULTY");
-                for (Course x : student.getRegisteredCourses()) {
-                    System.out.println(x.getCode() + " " + x.getSection());
-                }
-                break;
-
-            case 3:
-                System.out.println("Request History");
-                System.out.println("--------------------------");
-                for (int i = 0; i < student.getRequestHistory().size(); i++) {
-                    student.getRequestHistory().get(i).printRequestInfo();
-                }
-                // System.out.println(student.getRequestHistory().get(i).printCourseInfo());
-
-                break;
-            case 4:
                 if (admendment == false) {
                     System.out.println("Select course to register");
                     System.out.printf(" %-10s %-4s \n", "COURSE", "SECTION");
@@ -228,6 +192,44 @@ public class MainHandler {
                     System.out.println("Registration week is over");
 
                 }
+                break;
+
+            case 2:
+                System.out.printf(" %-10s %-4s \n", "CODE", "SECTION", "COURSE", "FACULTY");
+                for (Course x : student.getRegisteredCourses()) {
+                    System.out.println(x.getCode() + " " + x.getSection());
+                }
+                break;
+
+            case 3:
+                System.out.println("Select course to drop");
+                System.out.printf(" %-10s %-4s \n", "COURSE", "SECTION");
+                if (student.getRegisteredCourses().isEmpty()) {
+                    System.out.println("No Subjects Registered");
+                    break;
+                } else {
+                    for (int i = 0; i < student.getRegisteredCourses().size(); i++) {
+                        System.out.println("[" + (i + 1) + "] " + student.getRegisteredCourses().get(i).getName() + " "
+                                + student.getRegisteredCourses().get(i).getSection());
+                    }
+                    int choice = input.nextInt() - 1;
+                    Request drop = student_controller.requestCourseDrop(student.getRegisteredCourses().get(choice));
+                    AcademicOfficer_controller officer = new AcademicOfficer_controller(allAO.get(0),
+                            new AcademicOfficer_view());
+                    officer.addNewRequest(drop);
+                    System.out.println(
+                            student.getRegisteredCourses().get(choice).getName() + " has been requested to be dropped");
+                }
+                break;
+
+            case 4:
+                System.out.println("Request History");
+                System.out.println("--------------------------");
+                for (int i = 0; i < student.getRequestHistory().size(); i++) {
+                    student.getRequestHistory().get(i).printRequestInfo();
+                }
+                // System.out.println(student.getRequestHistory().get(i).printCourseInfo());
+
                 break;
             default:
                 System.out.println("Exiting . . . press any button to continue");

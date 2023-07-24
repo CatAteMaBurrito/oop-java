@@ -5,7 +5,7 @@ import java.util.Vector;
 public class Student extends Person {
     private String matricNo;
     private Vector<Request> requesthistory = new Vector<Request>(0);
-    private Vector<Course> registeredCourses = new Vector<Course>(0); // composition
+    private Vector<Course> registeredCourses = new Vector<Course>(0); // aggregation
 
     public Student(String name, Faculty faculty, String matricNo) {
         super(name, faculty);
