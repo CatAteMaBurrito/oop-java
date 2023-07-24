@@ -6,7 +6,7 @@ public class AcademicOfficer extends Person {
     // Unique reference for Academic Officer
     private String email;
     // handles requests made by students
-    static ArrayList<Request> listofRequests = new ArrayList<Request>(0);
+    static ArrayList<Request> listofRequests = new ArrayList<Request>(0); // association
 
     public AcademicOfficer(String name, Faculty faculty, String email) {
         super(name, faculty);

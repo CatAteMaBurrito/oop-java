@@ -144,8 +144,12 @@ public class MainHandler {
                 break;
             case 5:
                 officer.displayRequests();
-                int option1 = Integer.parseInt(input.nextLine());
-                officer.choosenRequest(option1);
+                try{
+                    int option1 = Integer.parseInt(input.nextLine());
+                    officer.choosenRequest(option1);
+                }catch(InputMismatchException e){
+                    System.out.println(e.getMessage());
+                }
                 break;
             default:
                 System.out.println("Exiting . . . press any button to continue");
